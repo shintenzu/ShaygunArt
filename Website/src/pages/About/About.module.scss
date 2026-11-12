@@ -1,0 +1,104 @@
+@use "../../variables";
+
+.home {
+    display: flex;
+    flex-direction: row-reverse;
+    background-image: url("../../images/BackgroundFlipped.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.gradient-border-rounded {
+    /* 1. Create a transparent border to make room for the gradient */
+    border: 4px solid transparent;
+    border-radius: 16px;
+
+    /* 2. Stack your backgrounds: Inner background first, then the gradient */
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to right, #743ad5, #d53a9d);
+
+    /* 3. Clip the layers so the gradient only shows on the border area */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.content {
+    // border: 2px solid #ff0000;
+    display: flex;
+
+    flex: 1 0 0;
+    min-width: 0; // lets the box shrink below its content's width
+    min-height: 0;
+    flex-direction: column;
+
+    //margin-right: 1dvw;
+    padding: 2%;
+    padding-left: 0px;
+    padding-bottom: 1.5%;
+    margin-left: 3%;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    .top {
+        //border: 2px solid #ff0000;
+        padding-bottom: 3%;
+        //font-family: "mech", sans-serif;
+        font-family: variables.$font-header;
+        margin: 0;
+        flex: 0.5 0 0;
+    }
+
+    .typedHeader {
+        // border: 2px solid #ff0000;
+        display: block;
+        //flex-direction: column;
+        width: 100%;
+        flex: 3 0 0;
+        color: variables.$primary-white;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: clamp(0rem, 0.5dvw + 0.5dvh, 4rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-bottom: 0%;
+        padding-right: 2%;
+        padding-top: 0;
+        margin-top: 0;
+        .gold {
+            display: inline;
+            color: variables.$primary-gold;
+        }
+        .teal {
+            display: inline;
+            color: variables.$primary-teal;
+        }
+        .red {
+            display: inline;
+            color: variables.$primary-red;
+        }
+    }
+
+    .buttons {
+        //border: 2px solid #ff0000;
+        display: flex;
+        flex: 0 0 10%;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        color: variables.$primary-teal;
+        font-size: clamp(1rem, 3.25vh, 3rem);
+        z-index: 0;
+        gap: 1dvw;
+        margin-right: 2%;
+
+        .sIcon {
+            max-width: 3dvh;
+            //aspect-ratio: 1/1;
+            //min-height: 10px;
+            //min-width: 10px;
+            margin-right: 2%;
+        }
+    }
+}

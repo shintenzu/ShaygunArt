@@ -1,0 +1,72 @@
+[
+    {
+        "name":"CAC Specialty",
+        "date": "Nov 2026",
+        "icon":"icon.png",
+        "desc":"Cac Specialty. Is a project where I did a plenty of things and stuff that occueres in tandom with the ninjas in the basement. DO not cry for the ninjas know you and feel no fear. They feel no pain, they feel no passion. They are simply here to take you and throw you into the eternal fire where the pains of the world fall away and all that is left is silence and regret. Cac Specialty. Is a project where I did a plenty of things and stuff that occueres in tandom with the ninjas in the basement. DO not cry for the ninjas know you and feel no fear. They feel no pain, they feel no passion. They are simply here to take you and throw you into the eternal fire where the pains of the world fall away and all that is left is silence and regret. Is a project where I did a plenty of things and stuff that occueres in tandom with the ninjas in the basement. DO not cry for the ninjas know you and feel no fear. They feel no pain, they feel no passion. They are simply here to take you and throw you into the eternal fire where the pains of the world fall away and all that is left is silence and regret.",
+        "pcolors":["#FF0000", "#000000"],
+        "scolors":["#FF0000", "#000000"],
+        "typography":[{
+            "use": "primary",
+            "name":"Sarpanch Regular",
+            "font":"Sarpanch-Regular.otf",
+            "category":["Sans Serif", "8-bit"],
+            "style":["bold"]
+        }],
+        "tools":["Ps", "Id", "Ai", "SDXL"],
+        "spread":[
+            {
+                "header":"Section Title 1",
+                "content": [
+                    {
+                        "name":"Test1",
+                        "image":[
+                            {
+                                "title":"Test1", 
+                                "date": "July 2022",
+                                "url":"Test1.png",
+                                "caption": "This is a test image"                                
+                            },
+                            {
+                                "title":"Test2", 
+                                "url":"Test2.png",
+                                "caption": "This is a test2 image"                                
+                            }
+                        ]
+                    },
+                    {
+                        "name":"Test2",
+                        "image":[
+                            {
+                                "title":"Test2", 
+                                "date": "July 2022",
+                                "url":"Test2.png",
+                                "caption": "This is a test2 image"                                
+                            },
+                            {
+                                "title":"Test3", 
+                                "date": "July 2022",
+                                "url":"Test3.png",
+                                "caption": "This is a test3 image"                                
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "gallery":[
+                    {
+                        "title":"Test1", 
+                        "date": "July 2022",
+                        "url":"Test1.png",
+                        "caption": "This is a test image"                                
+                    },
+                    {
+                        "title":"Test2",
+                        "date": "July 2022", 
+                        "url":"Test2.png",
+                        "caption": "This is a test2 image"                                
+                    }
+                ]
+    }
+]

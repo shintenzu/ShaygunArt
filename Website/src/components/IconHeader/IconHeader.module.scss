@@ -1,0 +1,30 @@
+@use "../../variables";
+
+.container {
+    display: flex;
+    //border: 2px solid #ff0000;
+    flex: 1 1 0%;
+    align-items: center;
+    flex-direction: row;
+}
+.skill1 {
+    //flex-basis: 33.333%;
+    // border: 2px solid #ff0000;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Vertically centers the text */
+    color: variables.$primary-teal;
+    //padding-left: 0%;
+    .sub {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .sIcon {
+        max-height: 30px;
+        max-width: 30px;
+        min-height: 10px;
+        min-width: 10px;
+        margin-right: 10px;
+    }
+}

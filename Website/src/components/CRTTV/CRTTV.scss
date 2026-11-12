@@ -1,0 +1,276 @@
+@use "../../variables";
+
+@font-face {
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/terminal_copy.ttf);
+  font-family: "Terminal";
+}
+@font-face {
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf) format("truetype");
+  font-family: "Sys";
+}
+
+/* Root: replaces the pen's body styles so nothing leaks globally */
+.crt-tv {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #1b2838;
+  opacity: 100%;
+}
+
+/* Background when TV is off */
+.crt-tv .screen::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, #85908c 0%, #323431 100%);
+}
+
+/* CRT scanlines + curved-glass overlay */
+.crt-tv.scanlines .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crt-tv.scanlines .overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/crt.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.crt-tv.scanlines .overlay::before {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size:
+    100% 2px,
+    3px 100%;
+}
+
+/* Static canvas */
+.crt-tv .picture {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  transform: scale(0, 0);
+  background: linear-gradient(to bottom, #85908c 0%, #323431 100%);
+}
+.crt-tv.on .picture {
+  animation: crt-on 3000ms linear 0ms normal forwards 1 running;
+}
+.crt-tv.off .picture {
+  animation: crt-off 750ms cubic-bezier(0.23, 1, 0.32, 1) 0ms normal forwards 1 running;
+}
+
+/* On-screen menu */
+.crt-tv .menu {
+  opacity: 0;
+  box-sizing: border-box;
+  width: 30%;
+  height: auto;
+  background-color: #0069ff;
+  color: #fff;
+  font-family: "Sys";
+  font-size: 40px;
+  text-transform: uppercase;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+  filter: blur(1px);
+}
+.crt-tv .menu header {
+  margin-bottom: 10px;
+  padding: 5px 15px;
+  color: #e7e05c;
+}
+.crt-tv .menu ul {
+  margin: 0;
+  padding: 0;
+}
+.crt-tv .menu li {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 5px 15px;
+}
+.crt-tv .menu li.active {
+  background-color: #1af2ff;
+}
+.crt-tv .menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+.crt-tv .menu footer {
+  display: flex;
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #2afd72;
+}
+.crt-tv .menu .key {
+  width: 50%;
+}
+.crt-tv .menu .key:last-child {
+  text-align: right;
+}
+.crt-tv .menu .key span {
+  display: inline-block;
+  height: 34px;
+  padding-left: 6px;
+  line-height: 36px;
+  background-color: #0069ff;
+  border: 6px solid #e7e05c;
+  border-radius: 6px;
+}
+
+/* "AV-1" label with RGB-split glitch layers */
+.crt-tv .text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 200px;
+  opacity: 0;
+  color: lime;
+  font-family: "Sys";
+  font-size: 6vmin;
+  text-shadow: 0 0 3px lime;
+  filter: blur(0.5px);
+}
+.crt-tv.on .text,
+.crt-tv.on .menu {
+  opacity: 1;
+  transition: opacity 10ms ease 2000ms;
+}
+
+.crt-tv .text span {
+  position: absolute;
+  filter: blur(1px);
+  animation:
+    crt-blur 30ms infinite,
+    crt-jerk 50ms infinite;
+}
+.crt-tv .text span:nth-child(1) {
+  color: red;
+  margin-left: -2px;
+  filter: blur(2px);
+}
+.crt-tv .text span:nth-child(2) {
+  color: lime;
+  margin-left: 2px;
+  filter: blur(2px);
+  animation: none;
+}
+.crt-tv .text span:nth-child(3) {
+  color: blue;
+  filter: blur(1px);
+  animation: none;
+}
+.crt-tv .text span:nth-child(4) {
+  color: #fff;
+  filter: blur(1px);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}
+.crt-tv .text span:nth-child(5) {
+  color: rgba(255, 255, 255, 0.1);
+  filter: blur(15px);
+}
+
+@keyframes crt-on {
+  0% {
+    transform: scale(1, 0.8) translate3d(0, 0, 0);
+    filter: brightness(4);
+    opacity: 1;
+  }
+  3.5% {
+    transform: scale(1, 0.8) translate3d(0, 100%, 0);
+  }
+  3.6% {
+    transform: scale(1, 0.8) translate3d(0, -100%, 0);
+    opacity: 1;
+  }
+  9% {
+    transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+    filter: brightness(4);
+    opacity: 0;
+  }
+  11% {
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    filter: contrast(0) brightness(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    filter: contrast(1) brightness(1.2) saturate(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes crt-off {
+  0% {
+    transform: scale(1, 1);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scale(1, 0.005);
+    filter: brightness(100);
+  }
+  70% {
+    transform: scale(1, 0.005);
+  }
+  90% {
+    transform: scale(0.005, 0.005);
+  }
+  100% {
+    transform: scale(0, 0);
+  }
+}
+
+@keyframes crt-blur {
+  0%,
+  100% {
+    filter: blur(1px);
+    opacity: 0.8;
+  }
+  50% {
+    filter: blur(1px);
+    opacity: 1;
+  }
+}
+
+@keyframes crt-jerk {
+  50% {
+    transform: translateX(1px);
+  }
+  51% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-tv .text span {
+    animation: none;
+  }
+}

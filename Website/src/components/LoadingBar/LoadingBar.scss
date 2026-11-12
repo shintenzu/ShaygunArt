@@ -1,0 +1,49 @@
+@use "../../variables";
+
+.loading-bar {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: transparent;
+  color: #fff;
+  //font-family: sans-serif;
+  transition: opacity 0.5s ease;
+}
+
+.header {
+  font-family: variables.$font-primary-alt1;
+}
+
+.loading-bar--fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-bar__track {
+  width: min(400px, 80vw);
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.loading-bar__fill {
+  width: 100%;
+  height: 100%;
+  background: #00defe;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.loading-bar__meta {
+  display: flex;
+  justify-content: space-between;
+  width: min(400px, 80vw);
+  font-size: 16px;
+  min-height: 1.2em;
+}

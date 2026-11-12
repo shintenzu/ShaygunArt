@@ -1,0 +1,110 @@
+@use "../../variables";
+
+.float {
+    position: fixed;
+    top: 0;
+    //background-color: rgba(0, 0, 0, 0.8);
+    //-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    //mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.95) 85%, rgba(0, 0, 0, 0) 100%);
+    animation: fadeIn 0.4s forwards;
+    //height: 16.5dvw;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 100%;
+        x: 0;
+        transform: translateY(0%);
+    }
+}
+
+.DesktopMainMenu {
+    z-index: 200;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    //padding: 0px;
+    //margin: 0px;
+
+    .logo {
+        align-self: center;
+        //border: 2px solid #3a373794;
+        height: 5.5dvw;
+        margin-right: 0.4%;
+
+        .image {
+            height: 100%;
+            object-fit: cover;
+        }
+        .title {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+
+            .titleBox {
+                //border: 2px solid #3a373794;
+                display: flex;
+                flex-direction: column;
+                padding: 5px;
+                overflow: hidden;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                .top,
+                .bottom {
+                    font-family: variables.$font-header;
+                    color: variables.$primary-gold;
+                    line-height: 1.5;
+                }
+                .top {
+                    margin-top: 0;
+                    padding-top: 0;
+                    font-size: clamp(0.25rem, 1.3vw, 1.3rem);
+                    color: variables.$primary-white;
+                }
+                .bottom {
+                    //height: 20%;
+                    font-size: clamp(0.25rem, 0.7735vw, 0.7735em);
+                    //font-size: 0.7735em;
+                    color: variables.$primary-teal;
+                    .gold {
+                        color: variables.$primary-gold;
+                    }
+                }
+            }
+        }
+    }
+}
+.content {
+    //border: 2px solid #3a373794;
+    display: flex;
+    width: 100%;
+    color: #dfdfdf;
+    justify-content: flex-end;
+    flex-direction: row;
+    background-color: transparent;
+    align-items: center;
+}
+
+.customBtn {
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: #dfdfdf;
+    margin-left: 2%;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    transition: transform 0.1s ease;
+}

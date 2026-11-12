@@ -1,0 +1,25 @@
+@use "../../../variables";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    margin: 0;
+    flex: 1 1 0;
+    width: 100%;
+    height: auto;
+    .sectionHead {
+        display: flex;
+        flex-direction: row;
+        color: variables.$primary-red;
+        font-family: variables.$font-primary-alt1;
+        font-size: clamp(1rem, calc((1.5vw + 1vh) * var(--text-scale, 1)), 3rem);
+        align-items: center;
+        .expand {
+            padding-right: 1%;
+            width: 3dvw;
+        }
+        .title {
+        }
+    }
+}

@@ -1,0 +1,551 @@
+@use "variables" as *;
+@import url("https://googleapis.com");
+@import "tailwindcss";
+
+//Fonts are defined in variables
+
+:root {
+    background-color: #141313;
+
+    font-family: $font-primary;
+
+    ul:empty {
+        display: none;
+    }
+    overflow-x: hidden;
+}
+
+.fill {
+    width: 100%;
+}
+
+.fill-x {
+    width: 100%;
+}
+.fill-y {
+    height: 100%;
+}
+.fill-all {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+//Flicker Effect
+
+@keyframes flicker {
+    0% {
+        opacity: 0.27861;
+    }
+    5% {
+        opacity: 0.34769;
+    }
+    10% {
+        opacity: 0.23604;
+    }
+    15% {
+        opacity: 0.90626;
+    }
+    20% {
+        opacity: 0.18128;
+    }
+    25% {
+        opacity: 0.83891;
+    }
+    30% {
+        opacity: 0.65583;
+    }
+    35% {
+        opacity: 0.67807;
+    }
+    40% {
+        opacity: 0.26559;
+    }
+    45% {
+        opacity: 0.84693;
+    }
+    50% {
+        opacity: 0.96019;
+    }
+    55% {
+        opacity: 0.08594;
+    }
+    60% {
+        opacity: 0.20313;
+    }
+    65% {
+        opacity: 0.71988;
+    }
+    70% {
+        opacity: 0.53455;
+    }
+    75% {
+        opacity: 0.37288;
+    }
+    80% {
+        opacity: 0.71428;
+    }
+    85% {
+        opacity: 0.70419;
+    }
+    90% {
+        opacity: 0.7003;
+    }
+    95% {
+        opacity: 0.36108;
+    }
+    100% {
+        opacity: 0.24387;
+    }
+}
+@keyframes textShadow {
+    0% {
+        text-shadow:
+            0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+            -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    5% {
+        text-shadow:
+            2.7928974010788217px 0 1px rgba(0, 30, 255, 0.5),
+            -2.7928974010788217px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    10% {
+        text-shadow:
+            0.02956275843481219px 0 1px rgba(0, 30, 255, 0.5),
+            -0.02956275843481219px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    15% {
+        text-shadow:
+            0.40218538552878136px 0 1px rgba(0, 30, 255, 0.5),
+            -0.40218538552878136px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    20% {
+        text-shadow:
+            3.4794037899852017px 0 1px rgba(0, 30, 255, 0.5),
+            -3.4794037899852017px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    25% {
+        text-shadow:
+            1.6125630401149584px 0 1px rgba(0, 30, 255, 0.5),
+            -1.6125630401149584px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    30% {
+        text-shadow:
+            0.7015590085143956px 0 1px rgba(0, 30, 255, 0.5),
+            -0.7015590085143956px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    35% {
+        text-shadow:
+            3.896914047650351px 0 1px rgba(0, 30, 255, 0.5),
+            -3.896914047650351px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    40% {
+        text-shadow:
+            3.870905614848819px 0 1px rgba(0, 30, 255, 0.5),
+            -3.870905614848819px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    45% {
+        text-shadow:
+            2.231056963361899px 0 1px rgba(0, 30, 255, 0.5),
+            -2.231056963361899px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    50% {
+        text-shadow:
+            0.08084290417898504px 0 1px rgba(0, 30, 255, 0.5),
+            -0.08084290417898504px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    55% {
+        text-shadow:
+            2.3758461067427543px 0 1px rgba(0, 30, 255, 0.5),
+            -2.3758461067427543px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    60% {
+        text-shadow:
+            2.202193051050636px 0 1px rgba(0, 30, 255, 0.5),
+            -2.202193051050636px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    65% {
+        text-shadow:
+            2.8638780614874975px 0 1px rgba(0, 30, 255, 0.5),
+            -2.8638780614874975px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    70% {
+        text-shadow:
+            0.48874025155497314px 0 1px rgba(0, 30, 255, 0.5),
+            -0.48874025155497314px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    75% {
+        text-shadow:
+            1.8948491305757957px 0 1px rgba(0, 30, 255, 0.5),
+            -1.8948491305757957px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    80% {
+        text-shadow:
+            0.0833037308038857px 0 1px rgba(0, 30, 255, 0.5),
+            -0.0833037308038857px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    85% {
+        text-shadow:
+            0.09769827255241735px 0 1px rgba(0, 30, 255, 0.5),
+            -0.09769827255241735px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    90% {
+        text-shadow:
+            3.443339761481782px 0 1px rgba(0, 30, 255, 0.5),
+            -3.443339761481782px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    95% {
+        text-shadow:
+            2.1841838852799786px 0 1px rgba(0, 30, 255, 0.5),
+            -2.1841838852799786px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+    100% {
+        text-shadow:
+            2.6208764473832513px 0 1px rgba(0, 30, 255, 0.5),
+            -2.6208764473832513px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+    }
+}
+
+@property --shift {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@keyframes imageShadow {
+    0% {
+        --shift: 0.44px;
+    }
+    5% {
+        --shift: 2.79px;
+    }
+    10% {
+        --shift: 0.03px;
+    }
+    20% {
+        --shift: 3.48px;
+    }
+    35% {
+        --shift: 3.9px;
+    }
+    50% {
+        --shift: 0.08px;
+    }
+    65% {
+        --shift: 2.86px;
+    }
+    80% {
+        --shift: 0.08px;
+    }
+    90% {
+        --shift: 3.44px;
+    }
+    100% {
+        --shift: 2.62px;
+    }
+}
+
+//glitch effect for header. Overlayed crt effect over whole page
+.glitch-image {
+    animation: imageShadow 1s infinite;
+    filter: drop-shadow(var(--shift) 0 1px rgba(0, 30, 255, 0.5))
+        drop-shadow(calc(var(--shift) * -1) 0 1px rgba(255, 0, 80, 0.3)) drop-shadow(0 0 3px);
+}
+.gradient {
+    z-index: 300;
+}
+
+.gradient::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    //animation: flicker 0.15s infinite;
+}
+.gradient::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size:
+        100% 2px,
+        3px 100%;
+    pointer-events: none;
+}
+.crt {
+    animation: textShadow 1.6s infinite;
+    //animation: flicker 0.15s infinite;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+//Default Button Styling
+.btn-grow,
+.grow {
+    transition: transform 0.02s ease-in;
+    transform: scale(1) translateY(0px) rotate(0deg);
+    cursor: pointer;
+}
+.grow {
+    cursor: default;
+}
+
+.btn-grow:hover,
+.grow:hover {
+    transform: scale(1.05) translateY(1px) rotate(0deg);
+}
+
+.btn-grow:active {
+    transform: scale(0.95) translateY(0px) rotate(1deg);
+}
+
+.type {
+    color: #0000;
+    background:
+        linear-gradient(-90deg, #00dffc 5px, #0000 0) 10px 0,
+        linear-gradient(#00dffc 0 0) 0 0;
+    background-size: calc(var(--n) * 1ch) 200%;
+    -webkit-background-clip: padding-box, text;
+    background-clip: padding-box, text;
+    background-repeat: no-repeat;
+    animation:
+        b 0.7s infinite steps(1),
+        t calc(var(--n) * 0.3s) steps(var(--n)) forwards;
+}
+
+@keyframes t {
+    from {
+        background-size: 0 200%;
+    }
+}
+@keyframes b {
+    50% {
+        background-position:
+            0 -100%,
+            0 0;
+    }
+}
+
+//Scrollbar styling
+
+$sb: 10px; // scrollbar width (check with el.offsetWidth - el.clientWidth)
+::-webkit-scrollbar {
+    width: $sb;
+    background-color: #000000ce; /* Dark retro track background */
+    //background: transparent;
+}
+
+/* 2. Track styling */
+
+/* 5. Stair-stepped Up & Down Pixel Arrow Buttons */
+::-webkit-scrollbar-button {
+    display: block;
+    height: $sb; /* Square 12px x 12px buttons */
+    width: $sb;
+    //background-color: #3a3a3a; /* Match track container background */
+    background: transparent;
+    background-repeat: no-repeat;
+}
+
+/* Up Arrow Logic: Draw horizontal pixel blocks stepping downward */
+::-webkit-scrollbar-button:single-button:decrement {
+    background-image:
+        linear-gradient($primary-gold, $primary-gold),
+        /* Top Tip: 2px wide */ linear-gradient($primary-gold, $primary-gold),
+        /* Mid-tier: 6px wide */ linear-gradient($primary-gold, $primary-gold); /* Base row: 10px wide */
+    background-color: transparent;
+
+    /* Precision size placement for each step layer (Width x Height) */
+    background-size:
+        2px 2px,
+        6px 2px,
+        10px 2px;
+
+    /* Centers each tier horizontally and stacks them vertically */
+    background-position:
+        center 2px,
+        center 4px,
+        center 6px;
+    &:hover {
+        background-image:
+            linear-gradient($primary-teal, $primary-teal),
+            /* Top Tip: 2px wide */ linear-gradient($primary-teal, $primary-teal),
+            /* Mid-tier: 6px wide */ linear-gradient($primary-teal, $primary-teal); /* Base row: 10px wide */
+        background-color: transparent;
+
+        /* Precision size placement for each step layer (Width x Height) */
+        background-size:
+            2px 2px,
+            6px 2px,
+            10px 2px;
+
+        /* Centers each tier horizontally and stacks them vertically */
+        background-position:
+            center 2px,
+            center 4px,
+            center 6px;
+    }
+}
+
+/* Down Arrow Logic: Draw horizontal pixel blocks stepping upward */
+::-webkit-scrollbar-button:single-button:increment {
+    background-image:
+        linear-gradient($primary-gold, $primary-gold),
+        /* Base row: 10px wide */ linear-gradient($primary-gold, $primary-gold),
+        /* Mid-tier: 6px wide */ linear-gradient($primary-gold, $primary-gold); /* Bottom Tip: 2px wide */
+
+    background-size:
+        10px 2px,
+        6px 2px,
+        2px 2px;
+
+    background-position:
+        center 4px,
+        center 6px,
+        center 8px;
+    &:hover {
+        background-image:
+            linear-gradient($primary-teal, $primary-teal),
+            /* Base row: 10px wide */ linear-gradient($primary-teal, $primary-teal),
+            /* Mid-tier: 6px wide */ linear-gradient($primary-teal, $primary-teal); /* Bottom Tip: 2px wide */
+
+        background-size:
+            10px 2px,
+            6px 2px,
+            2px 2px;
+
+        background-position:
+            center 4px,
+            center 6px,
+            center 8px;
+    }
+}
+
+/* Optional Hover feedback for Arrow Buttons */
+::-webkit-scrollbar-button:hover {
+}
+
+::-webkit-scrollbar-button:start:increment {
+    display: none;
+}
+
+/* Hide the up button that appears at the bottom */
+::-webkit-scrollbar-button:end:decrement {
+    display: none;
+}
+
+/* Ensure only the single native buttons stay active */
+::-webkit-scrollbar-button:single-button {
+    display: block;
+}
+
+::-webkit-scrollbar-thumb {
+    /* We use linear-gradients to cut out the 2px x 2px corners */
+    background-image: linear-gradient($primary-gold, $primary-gold);
+    //margin-top: 4px;
+    //margin-bottom: 4px;
+
+    /* Combine corner compositions together */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    border-radius: 6px;
+
+    /* Your modified custom 1px/2px inner 3D depth lines */
+    box-shadow:
+        inset 1px 1px 0 0 #e4cea5,
+        /* Highlight edge */ inset -2px -2px 0 0 #bb5f09; /* Shadow edge */
+
+    /* Adds Space between the bottons and the thumb */
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    background-clip: padding-box;
+}
+
+/* 4. Hover effect to change block state */
+::-webkit-scrollbar-thumb:hover {
+    /* Swaps base coloring while retaining corner masks */
+    background-image: linear-gradient($primary-teal, $primary-teal);
+    box-shadow:
+        inset 1px 1px 0 0 #94ffff,
+        inset -1px -1px 0 0 #016186;
+}
+
+// Scroll fade: top and bottom edge fades that follow scroll position.
+// --fade-top and --fade-bottom are updated by the useScrollFade hook.
+
+//ScrollFade styling
+$fade-gradient: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--fade-top),
+    #000 calc(100% - var(--fade-bottom)),
+    transparent 100%
+);
+
+// Solid strip over the scrollbar so it is never faded
+$solid: linear-gradient(#000, #000);
+
+.scrollFade {
+    // Starting values (top of the scroll): bottom fade only.
+    // The hook overwrites these as you scroll.
+    --fade-top: 0%;
+    --fade-bottom: 30%;
+
+    height: 400px; // needs a defined height to scroll
+    overflow-y: auto;
+
+    -webkit-mask-image: $fade-gradient, $solid;
+    mask-image: $fade-gradient, $solid;
+    -webkit-mask-size:
+        calc(100% - #{$sb}) 100%,
+        #{$sb} 100%;
+    mask-size:
+        calc(100% - #{$sb}) 100%,
+        #{$sb} 100%;
+    -webkit-mask-position:
+        left top,
+        right top;
+    mask-position:
+        left top,
+        right top;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}

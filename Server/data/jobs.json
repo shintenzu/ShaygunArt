@@ -1,0 +1,62 @@
+[
+    {
+        "id":1,
+        "type":["software","design"],
+        "company":"PNG Solutions",
+        "location":"Atlanta, Georgia",
+        "start":"Jan 2024",
+        "end": "Present",
+        "title": "Junior Front End Developer / UI-UX Designer",
+        "roles": [
+            "Designed visually striking front-end components for a patient portal application built for both desktop and mobile platforms.",
+            "Coded the interface in a React environment using TypeScript, styling components with Tailwind CSS and custom Shadcn UI components to bring UI/UX designs directly into functional code.",
+            "Created all graphic design assets used throughout the application, maintaining visual consistency across desktop and mobile experiences."
+        ]
+
+    },
+    {
+        "id":2,
+        "type":["software","design"],
+        "company":"CAC SPECIALTY",
+        "location":"Atlanta, Georgia",
+        "start":"July 2020",
+        "end": "Aug 2023",
+        "title": "Marketing Specialist / Web Developer",
+        "roles": [
+            "Designed print and digital marketing collateral, including brochures, fliers, and employee benefit booklets, from initial concept through final production, ensuring every piece met brand guideline standards for color, type, and layout.",
+            "Maintained brand consistency across the two main company websites (cobbsallen.com, cacspecialty.com) and three subsidiary business units (Capital Markets Solutions, Strategic Consulting, Asset Protection), strengthening recognition across the organization.",
+            "Coordinated with stakeholders across sales, leadership, and subsidiary teams to interpret business needs into design options that met project timeline and budget constraints.",
+            "Organized and maintained the company intranet and web directory, improving internal access to employee expertise, product offerings, and shared resources."
+        ]
+
+    },
+    {
+        "id":3,
+        "type":["design","teaching"],
+        "company":"Georgia State University",
+        "location":"Atlanta, Georgia",
+        "start":"Sept 2014",
+        "end": "Jul 2020",
+        "title": "Graphic Design Instructor",
+        "roles": [
+            "Developed a college-level curriculum emphasizing process, innovation, and real-world practical concepts, equipping 89 students with skills for a competitive field",
+            "Fostered a culture of creative problem-solving among students, guiding them to apply structured design strategies and deliver professional-grade presentations.",
+            "Improved student portfolio quality and job-market readiness by integrating industry-standard workflows and iterative feedback into course projects."
+        ]
+
+    },
+    {
+        "id":4,
+        "type":["software"],
+        "company":"Talent Quest",
+        "location":"Atlanta, Georgia",
+        "start":"Jan 2019",
+        "end": "May 2019",
+        "title": "Web / Software Development Intern (Concurrent, Part-Time)",
+        "roles": [
+            "Built full-stack web applications using C#, Angular, JavaScript, and Microsoft SQL Server as part of the core development team.",
+            "Developed C# and Entity Framework applications to strengthen database security, and built Windows service applications supporting the company's migration to AWS."
+        ]
+
+    }
+]

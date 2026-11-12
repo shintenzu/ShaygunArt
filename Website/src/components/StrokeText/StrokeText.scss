@@ -1,0 +1,38 @@
+@use "../../variables";
+
+// .stroke-text {
+//   display: block;
+//   //border: 2px solid #ff0000;
+//   width: 100%;
+//   line-height: 0;
+//   padding: 0;
+//   margin: 0;
+//   //line-height: 0.8;
+// }
+
+.stroke-text--hover {
+  cursor: pointer;
+}
+
+// .stroke-text__svg {
+//   display: block;
+//   width: 100%;
+//   height: var(--stroke-text-height, 160px);
+// }
+
+.stroke-text__stroke,
+.stroke-text__fill {
+  user-select: none;
+}
+
+.stroke-text {
+  display: inline-block;
+  height: auto; // replaces height: var(--stroke-text-height)
+  padding-block: clamp(0.25rem, 0.3vw, 2rem); // responsive space above and below
+}
+
+.stroke-text__svg {
+  display: block;
+  max-width: 100%; // only scales down if the container is narrower than the text
+  height: auto;
+}

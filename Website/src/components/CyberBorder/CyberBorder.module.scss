@@ -1,0 +1,216 @@
+@use "../../variables";
+
+//$background: var(--background);
+
+.card {
+    --background: "../../images/plus.png";
+    --ring-width: 3px; // thickness of the rotating border
+    //height: 200px;
+    //border: 2px solid red;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    //padding: 20px;
+    //top: 50%;
+    //left: 50%;
+    //width: var(--card-size);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: #080707;
+    //cursor: pointer;
+    //box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.096);
+    filter: drop-shadow(4px 4px 12px black);
+    box-shadow: 0cqh 0 12cqh rgb(0, 1, 1);
+    // background-image: var(--background);
+    // background-size: "cover";
+    // opacity: 1;
+    // background-color: "#000000";
+    // background-blend-mode: "lighten";
+
+    //transform: translate(-50%, -50%) translateX(calc(var(--x) * 1%)) scale(var(--scale));
+
+    // transform and opacity are updated every frame by the component (so the cards
+    // can follow your finger), so they must NOT have a CSS transition.
+    transition:
+        scale 0.2s ease,
+        filter 0.2s ease,
+        box-shadow 0.2s ease;
+
+    // whatever you put in a card fills it
+    > * {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    // Rotating border. It's a frame drawn along the inside edge of the card
+    // (the gradient with its middle cut out by a mask), so the card's
+    // overflow: hidden and the rest of the structure stay as they are.
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1; // above the card's content
+        padding: var(--ring-width); // = ring thickness
+        border-radius: inherit;
+        background: conic-gradient(
+            from var(--angle),
+            variables.$secondary-teal,
+            variables.$primary-teal,
+            variables.$secondary-red,
+            variables.$primary-red,
+            variables.$secondary-teal
+        );
+        // cut out the middle so only the edge frame remains
+        -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+
+        // hidden until the card is active
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        animation: spin 8s linear infinite;
+        animation-play-state: paused; // idle cards don't animate
+    }
+
+    // cards outside the visible range sit invisibly at the edges
+    &[data-hidden] {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:hover {
+        filter: brightness(1.15);
+        box-shadow: 0 0 1.5rem rgba(0, 222, 254, 0.6);
+        scale: 1.04; // composes with the transform above
+    }
+
+    &:active {
+        filter: brightness(0.85);
+        scale: 0.98;
+        //rotate: 45deg;
+    }
+
+    .crtInner {
+        //border: 2px solid rgb(0, 255, 128);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        opacity: 0.9;
+        color: variables.$primary-white;
+
+        //padding: 5%;
+        width: 100%;
+        height: 100%;
+
+        > * {
+            width: 100%; // your item fills the inner
+            height: 100%;
+        }
+    }
+
+    // keep the rotating ring above the CRT overlays
+    &::before {
+        //z-index: 900;
+    }
+    .caption {
+        z-index: 20;
+        width: 100%;
+        //border: 2px solid green;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        text-align: center;
+        justify-content: center;
+
+        bottom: 0%;
+        height: 25%;
+        background-color: #000000;
+        color: variables.$primary-white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out; /* Handles smooth motion */
+        //padding: 5%;
+        font-size: clamp(0.1rem, calc(0.5cqw + 0.5cqh), 3rem);
+        //padding-top: 5%;
+        .captionLeft,
+        .captionRight {
+            //border: 2px solid rgb(72, 255, 0);
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: space-between;
+            padding: 2%;
+
+            & > :first-child {
+                font-weight: 900;
+                //color: variables.$primary-white;
+            }
+            & > :not(:first-child) {
+            }
+        }
+        .captionLeft {
+            color: variables.$primary-gold;
+            & > :first-child {
+                //font-weight: 900;
+                color: variables.$primary-gold;
+            }
+        }
+        .captionRight {
+            padding-left: 10px;
+        }
+    }
+    &:hover .caption {
+        transform: translateY(0);
+    }
+    .counter {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        // align-self: flex-end;
+        // justify-self: flex-start;
+        top: -22%;
+        right: 3%;
+        height: 25%;
+        width: 25%;
+        background-color: #000000;
+        opacity: 0.7;
+        color: variables.$primary-white;
+        transform: translateY(100%);
+        border-radius: 15%;
+        //transition: transform 0.3s ease-in-out; /* Handles smooth motion */
+        padding: 2%;
+        font-size: clamp(0.1rem, calc(0.75cqw + 0.75cqh), 3rem);
+    }
+}
+
+// Glow for Active Card
+.active {
+    box-shadow: 0 0 1rem rgba(0, 220, 254, 0.26);
+
+    &::before {
+        opacity: 0.5;
+        animation-play-state: running;
+    }
+}
+
+.crtOuter {
+    // background-color: #000;
+    // //opacity: 0.5;
+    // background-blend-mode: multiply;
+}

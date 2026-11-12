@@ -1,0 +1,516 @@
+@use "../../variables";
+
+.home {
+    --panel-height: 80dvh;
+    --text-scale: 0.9;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    //border: 2px solid #ff0000;
+    // background-image: url("../../images/Background.png");
+
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        left: -50%;
+        top: -150%;
+        width: 200%;
+        height: 400%;
+        background-color: #000000;
+        background-repeat: no-repeat;
+        background-size:
+            50% 50%,
+            50% 50%;
+        background-position:
+            0 0,
+            100% 0,
+            100% 100%,
+            0 100%;
+        background-image:
+            linear-gradient(#00d9ff, #0195da5e), linear-gradient(#f0190a00, #fa611a00),
+            linear-gradient(#ff1100, #fa3c1a5d), linear-gradient(#f0190a00, #fa611a00);
+        animation: rotate 8s linear infinite;
+        opacity: 30%;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 3px;
+        top: 3px;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        background-color: #000000;
+        background-image: url("../../images/Background.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 5px;
+        //opacity: 80%;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(1turn);
+        }
+    }
+
+    .legend {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 1.5cqw;
+        right: 2cqw;
+        border: 2px solid rgba(117, 117, 117, 0.664);
+        width: 10dvw;
+        height: 9dvw;
+        padding: 1%;
+        border-radius: 10%;
+        //opacity: 150%;
+        background-color: #00000067;
+        .title {
+            display: flex;
+            height: 15%;
+            border: 2px solid red;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            color: variables.$primary-white;
+            font-size: clamp(0.1rem, 1dvw + 0.5dvh, 3rem);
+            padding-bottom: 5%;
+        }
+        .keyContainer {
+            display: flex;
+            flex-direction: row;
+            flex: 1 0 0;
+            .keyIcon,
+            .keyDesc {
+                //border: 2px solid red;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: space-between;
+            }
+            .keyIcon {
+                flex: 1 0 0;
+                //border: 2px solid red;
+                //flex: none;
+                container-type: size;
+                //width: 100%;
+                align-content: flex-start;
+                //align-self: flex-start;
+                //height: auto;
+                //border: 2px solid red;
+                //aspect-ratio: 1/1;
+
+                padding-right: 8%;
+                width: 50%;
+                img {
+                    align-self: flex-end;
+                    height: 1.5dvw;
+                    //min-height: 100%;
+                    //aspect-ratio: 1 / 1; // width equals height
+                    width: 1.5dvw; // lets the ratio compute the width
+                    flex: none; // stops the flex row from squashing the width
+                    //object-fit: cover; // fills the square, cropping any extra
+                }
+            }
+            .keyDesc {
+                flex: 2 0 0;
+                * {
+                    justify-self: center;
+                    height: sdvw;
+                    font-size: clamp(0.1rem, 0.6dvw + 0.2dvh, 3rem);
+                }
+            }
+        }
+    }
+}
+
+.gradient-border-rounded {
+    /* 1. Create a transparent border to make room for the gradient */
+    border: 4px solid transparent;
+    border-radius: 16px;
+
+    /* 2. Stack your backgrounds: Inner background first, then the gradient */
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to right, #743ad5, #d53a9d);
+
+    /* 3. Clip the layers so the gradient only shows on the border area */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.content {
+    //border: 2px solid #ff0000;
+    display: flex;
+    font-family: variables.$font-primary;
+    flex: 0 0 100%;
+    min-width: 0; // lets the box shrink below its content's width
+    min-height: 0;
+    flex-direction: column;
+    height: auto;
+    padding: 3%;
+    //margin-right: 1dvw;
+    padding-top: 30px;
+    //padding-bottom: 30px;
+    font-size: clamp(0.1rem, 1dvw + 1dvh, 3rem);
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .top {
+        display: flex;
+        //border: 2px solid #ff0000;
+        flex-direction: row;
+        align-content: center;
+        justify-content: flex-start;
+        margin: 0;
+        //flex: 1 1 0;
+        width: 60cqw;
+        //height: 5cqw;
+        .title {
+            //border: 2px solid #00d9ff;
+            //flex: 1 1 0;
+            font-family: variables.$font-header;
+            align-self: center;
+        }
+    }
+
+    // Universal Header for all Sections
+    .header,
+    .pHeader {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        margin: 0;
+        //flex: 1 1 0;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        //padding-bottom: 5%;
+
+        .sectionHead {
+            display: flex;
+            flex-direction: row;
+            color: variables.$primary-gold;
+            font-family: variables.$font-primary-alt1;
+            font-size: clamp(1rem, calc((1.5vw + 1vh) * var(--text-scale, 1)), 3rem);
+            align-items: center;
+            padding-bottom: 2%;
+            .expand {
+                padding-right: 1%;
+                width: 3dvw;
+            }
+            .title {
+            }
+        }
+    }
+    .pHeader {
+        align-items: flex-start;
+    }
+
+    // Universal Category
+    .categories,
+    .pInfo,
+    .pDetails {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        //border: 2px solid #008fc7;
+        width: 100%;
+        padding-bottom: 4%;
+        gap: 5%;
+    }
+    .pInfo,
+    .pDetails {
+        justify-content: flex-start;
+        padding-left: 0%;
+        height: 13dvw;
+        padding-bottom: 0%;
+        margin-bottom: 3%;
+        align-items: flex-start;
+        gap: 2%;
+
+        //overflow-y: scroll;
+    }
+    .pDetails {
+        //border: 2px solid red;
+        height: 10dvw;
+        margin-top: 2%;
+    }
+}
+
+//Needed to animate angle
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+// @property --blur {
+//     syntax: "<length>";
+//     initial-value: 0.25rem;
+//     inherits: false;
+// }
+
+.projectIcon {
+    border: 2px solid variables.$primary-white;
+    display: flex;
+    --blur: 0.25rem;
+    position: relative;
+    isolation: isolate; // keeps the layers inside this box
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex: 1 1 0;
+
+    border-radius: 20px;
+    text-align: center;
+    color: variables.$primary-red;
+    //background-image: url("../../images/Background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    background-color: variables.$primary-black;
+    //border: 2px solid rgba(255, 255, 255, 0.329);
+    img {
+        //border: 2px solid rgb(0, 30, 199);
+        justify-self: center;
+        position: absolute;
+        //top: 0;
+        //left: 0;
+        max-width: 100%;
+        z-index: -1;
+        opacity: 0.4;
+    }
+}
+
+.projectDesc {
+    height: 100%;
+    position: relative;
+    flex: 2 1 0;
+    font-size: clamp(1rem, calc((0.75vw + 0.5vh) * var(--text-scale, 1)), 3rem);
+    color: variables.$primary-white;
+    padding-right: 1%;
+    display: block;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.pColors,
+.sColors,
+.typography,
+.tools {
+    height: 100%;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 2%;
+    overflow: hidden;
+    //border: 2px solid red;
+
+    p {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .title {
+        flex: 1 1 0;
+        //border: 2px solid rgb(17, 0, 255);
+        width: 100%;
+        font-size: clamp(0.2rem, calc((1vw + 0.5vh) * var(--text-scale, 1)), 3rem);
+        padding-bottom: 2%;
+        color: variables.$primary-white;
+    }
+    .content,
+    .typeContent,
+    .toolContent {
+        font-size: clamp(0.2rem, calc((1cqw + 0.5cqh) * var(--text-scale, 1)), 3rem);
+        //border: 2px solid #008fc7;
+        flex: 4 1 0;
+        width: 100%;
+        padding: 0;
+
+        //margin: 0;
+    }
+    .typeContent,
+    .toolContent {
+        border-radius: 0.5cqw;
+        border: 2px solid variables.$primary-black;
+        padding-left: 1%;
+        background-color: variables.$primary-white;
+        color: variables.$primary-black;
+        //flex: 1; /* Tells the child to fill the remaining space */
+        min-height: 0; /* CRITICAL: Overrides the default 'min-height: auto' which allows children to expand */
+        min-width: 0; /* Use this if your layout is horizontal */
+        //overflow: auto;
+    }
+    .typeContent {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        //border: 2px solid red;
+        max-height: 500px;
+
+        .typeColumn {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0; // fill the height of .typeContent
+            min-height: 0; // CRITICAL: lets it shrink below its content's height
+            width: 100%;
+            //border: 2px solid red;
+            padding: 2%;
+            padding-left: 3%;
+        }
+
+        .typeHeader {
+            //border: 2px solid red;
+            display: flex;
+            flex-direction: row;
+            color: variables.$primary-red;
+            font-size: clamp(0.1rem, calc((0.7cqw + 0.4cqh) * var(--text-scale, 1)), 3rem);
+            width: calc(100% - 12px);
+            .primaryHeader {
+                flex: 1 1 0;
+            }
+        }
+        .typeList {
+            //border: 2px solid rgb(0, 255, 13);
+            display: flex;
+            flex-direction: row;
+            font-size: clamp(0.1rem, calc((0.6cqw + 0.3cqh) * var(--text-scale, 1)), 3rem);
+            flex: 4 1 0;
+            overflow-y: auto;
+            width: 100%;
+            .primaryList {
+                display: flex;
+                flex-direction: column;
+                //flex: 1;
+                width: calc(50% + 30px);
+                min-height: 0;
+            }
+            // .secondaryList {
+            //     flex: 1 1 0;
+            // }
+        }
+    }
+    .content {
+        --gap: 8px; // set to 0 if you want no space between items
+
+        display: flex;
+        flex-direction: row;
+        align-content: stretch;
+        flex-wrap: wrap;
+        gap: var(--gap);
+        font-size: clamp(0.2rem, calc((0.6cqw + 0.5cqh) * var(--text-scale, 1)), 3rem);
+        //align-self: stretch;
+        .colorX {
+            border: 2.5px solid rgba(46, 46, 46, 0.829);
+            padding: 1.5%;
+            border-radius: 10px;
+            flex: 1 1 calc(33.333% - var(--gap)); // grow, shrink, basis
+            min-width: 0;
+            align-self: stretch;
+            //height: 100%;
+        }
+    }
+    .toolContent {
+        --gap: 4px;
+        display: flex;
+        flex-direction: row;
+        //align-content: stretch;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--gap);
+        font-size: clamp(0.2rem, calc((0.75cqw + 0.5cqh) * var(--text-scale, 1)), 3rem);
+        padding: 3%;
+        //flex: 1 0 0;
+        height: 50%;
+        //overflow-y: scroll;
+        overflow: hidden;
+        .toolX {
+            //border: 2.5px solid rgba(46, 46, 46, 0.829);
+            //padding: 1%;
+            border-radius: 10px;
+            //flex: 1 1 calc(33.333% - var(--gap)); // grow, shrink, basis
+            //flex: 1 1 20%;
+            min-height: 10%;
+            max-height: 50%;
+            //max-height: 25%;
+            aspect-ratio: 1/1;
+            img {
+                min-height: 0;
+            }
+        }
+    }
+}
+
+.catBox {
+    //border: 2px solid red;
+    display: flex;
+    --blur: 0.25rem;
+    position: relative;
+    isolation: isolate; // keeps the layers inside this box
+    align-items: center;
+    justify-content: center;
+    height: 15dvw;
+    //width: 15dvw;
+    flex: 1 1 0;
+    //padding: 5%;
+    border-radius: 20px;
+    text-align: center;
+    color: variables.$primary-red;
+    //background-image: url("../../images/Background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .catTitle {
+        display: flex;
+        //border: 2px solid rgb(61, 165, 52);
+        justify-content: center;
+        align-items: center;
+        justify-self: center;
+        align-self: center;
+        height: 100%;
+        padding: 2%;
+    }
+    // no background-color here, ::after provides it
+
+    .type {
+        position: absolute;
+        top: 0.5cqw;
+        right: 0.25cqw;
+        width: 2.5dvw;
+        height: 2.5dvw;
+
+        flex: none;
+        container-type: size;
+        //border: 2px solid red;
+        aspect-ratio: 1/1;
+        padding-right: 2%;
+        img {
+            height: 0;
+            min-height: 100%;
+            aspect-ratio: 1 / 1; // width equals height
+            width: auto; // lets the ratio compute the width
+            flex: none; // stops the flex row from squashing the width
+            //object-fit: cover; // fills the square, cropping any extra
+        }
+    }
+}

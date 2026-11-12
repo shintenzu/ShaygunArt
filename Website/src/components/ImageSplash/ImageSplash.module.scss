@@ -1,0 +1,54 @@
+.splash {
+  //border: 2px solid #ff0000;
+  flex: 1 0 0;
+
+  min-height: 0;
+  min-width: 0;
+
+  display: flex;
+  justify-content: center; // crop evenly from both sides if the image is too wide
+
+  position: relative;
+  z-index: 0;
+}
+
+.base {
+  //border: 2px solid #ff0000;
+  position: relative; // required for z-index to apply
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  .image {
+    //border: 2px solid #FF0000;
+    display: block;
+    position: relative;
+    height: var(--panel-height);
+    flex: none; // stops the flex row from squashing the image's width
+    //width: var(--panel-height);
+    opacity: 80%;
+    max-width: none;
+    filter: drop-shadow(8px 8px 8px rgba(14, 8, 5, 0.911));
+
+    //width: 100%;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: -1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+}
+
+.image2 {
+  display: block;
+  height: var(--panel-height);
+  width: auto;
+  opacity: 60%;
+  max-width: none;
+}

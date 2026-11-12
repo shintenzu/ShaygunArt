@@ -1,0 +1,22 @@
+@use "../../../variables";
+
+.MenuButton {
+    display: flex;
+    border: 2px solid #3a373794;
+    background-color: transparent;
+    //font-size:1.2rem;
+    //font-size: clamp(0.5rem, 1.25vw, 1.25rem); // silk font size
+    font-size: clamp(0.5rem, 1.45vw, 1.75rem); // 04 Font size
+    font-weight: 550;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: variables.$primary-gold;
+    margin-left: 2%;
+    padding-right: 0px;
+    transition: transform 0.1s ease;
+    font-family: variables.$font-primary-alt1;
+}
+.MenuButton:focus {
+    color: variables.$primary-teal;
+}

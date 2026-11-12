@@ -1,0 +1,22 @@
+@use "../../variables";
+
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  color: variables.$primary-gold;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+.text-type__highlight {
+  //color: variables.$primary-gold;
+  //font-weight: 700;
+}

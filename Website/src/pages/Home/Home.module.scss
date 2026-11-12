@@ -1,0 +1,102 @@
+@use "../../variables";
+
+.content {
+  // border: 2px solid #ff0000;
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: 3%;
+  padding-top: 2%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-right: 1%;
+
+  .top {
+    font-family: variables.$font-header;
+    margin: 0;
+    flex: 0.5 0 0;
+  }
+  .iconHeader {
+    flex: 4 0 0;
+    width: 100%;
+
+    .skills {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      font-size: clamp(0rem, 1vw + 1vh, 5rem);
+      //border: 2px solid #00e1ff;
+      * {
+        display: flex;
+        //border: 2px solid #ff0000;
+        flex: 1 0 0%;
+        white-space: nowrap;
+        align-items: center;
+      }
+    }
+  }
+  .typedHeader {
+    display: flex;
+    width: 100%;
+    // border: 2px solid #ff0000;
+    flex: 0 1 0;
+    color: variables.$primary-white;
+    align-items: center;
+    font-size: clamp(0rem, 1dvw + 0.7dvh, 4rem);
+    .callout {
+      color: variables.$primary-gold;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: space-between;
+    //border: 2px solid #ff0000;
+    align-items: center;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    color: variables.$primary-white;
+    //font-size: 25em;
+    //font-size: clamp(1rem, 4vw + 0.5rem, 3rem);
+    z-index: 0;
+    gap: 1.5dvw;
+    white-space: nowrap;
+  }
+
+  .contacts {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    //border: 2px solid #ff0000;
+    width: 100%;
+    margin-left: 0;
+    color: variables.$primary-white;
+    font-size: 1.5em;
+    gap: 5px;
+
+    z-index: 0;
+    //gap: 0.05rem;
+    .icons {
+      max-width: calc(3dvw);
+      //max-height: 40px;
+      //max-width: 40px;
+      min-height: 1px;
+      min-width: 1px;
+      object-fit: cover;
+      transition: transform 0.1s ease;
+    }
+  }
+}
+
+.splash {
+  //border: 2px solid red;
+  display: flex;
+  //flex: 0 0 53%;
+  width: 53%;
+  //overflow: hidden;
+}

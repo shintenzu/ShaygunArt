@@ -1,0 +1,87 @@
+@use "../../../variables";
+
+.legend {
+    //border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 6cqw;
+    right: 2cqw;
+    border: 2px solid rgba(117, 117, 117, 0.664);
+    width: 8dvw;
+    height: 9dvw;
+    border-radius: 10%;
+    opacity: 80%;
+    background-color: #00000067;
+    white-space: nowrap;
+
+    .legendBox {
+        //border: 2px solid blue;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 2cqh;
+        .title {
+            //padding-top: 1cqw;
+            position: relative;
+            display: flex;
+            height: 20%;
+            //border: 2px solid red;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            color: variables.$primary-gold;
+            font-size: clamp(0.1rem, 1dvw + 0.5dvh, 3rem);
+            padding-bottom: 1.5rem;
+        }
+        .keyContainer {
+            //border: 2px solid red;
+            display: flex;
+            flex-direction: row;
+            //height: auto;
+            flex: 1 0 0;
+            .keyIcon,
+            .keyDesc {
+                //border: 2px solid red;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: space-between;
+            }
+            .keyIcon {
+                flex: 1 0 0;
+                //border: 2px solid red;
+                //flex: none;
+                container-type: size;
+                //width: 100%;
+                align-content: flex-start;
+                //align-self: flex-start;
+                //height: auto;
+                //border: 2px solid red;
+                //aspect-ratio: 1/1;
+
+                padding-right: 8%;
+                width: 50%;
+                .img {
+                    align-self: flex-end;
+                    height: 1.5dvw;
+                    //min-height: 100%;
+                    //aspect-ratio: 1 / 1; // width equals height
+                    width: 1.5dvw; // lets the ratio compute the width
+                    flex: none; // stops the flex row from squashing the width
+                    //object-fit: cover; // fills the square, cropping any extra
+                }
+            }
+            .keyDesc {
+                flex: 2 0 0;
+                color: variables.$primary-white;
+                * {
+                    justify-self: center;
+                    height: sdvw;
+                    font-size: clamp(0.1rem, 0.6dvw + 0.2dvh, 3rem);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/* Subtle jitter: each .jitter element moves on its own timing */
+.jitter {
+  --amp: 0.3px;     /* max movement in px */
+  --rot: 0.04deg;   /* max rotation */
+  --dur: 2.6s;      /* length of one jitter cycle */
+  --delay: 0s;      /* negative = starts partway through the cycle */
+  --dir: normal;    /* normal | reverse | alternate | alternate-reverse */
+
+  /* steps(1, end) holds each keyframe, giving sharp twitchy jumps.
+     Swap for `linear` for a smoother shake. */
+  animation: jitter var(--dur) steps(1, end) var(--delay) infinite var(--dir, normal);
+}
+
+/* Uses the individual `translate` / `rotate` properties instead of `transform`,
+   so it won't clash with Framer Motion or any transform you already have. */
+@keyframes jitter {
+  0%   { translate: calc(var(--amp) *  0.6) calc(var(--amp) * -0.4); rotate: calc(var(--rot) *  0.5); }
+  12%  { translate: calc(var(--amp) * -0.8) calc(var(--amp) *  0.3); rotate: calc(var(--rot) * -0.7); }
+  25%  { translate: calc(var(--amp) *  0.2) calc(var(--amp) *  0.9); rotate: calc(var(--rot) *  0.2); }
+  37%  { translate: calc(var(--amp) * -0.5) calc(var(--amp) * -0.9); rotate: calc(var(--rot) *  0.9); }
+  50%  { translate: calc(var(--amp) *  1.0) calc(var(--amp) *  0.1); rotate: calc(var(--rot) * -0.4); }
+  62%  { translate: calc(var(--amp) * -0.3) calc(var(--amp) *  0.6); rotate: calc(var(--rot) *  0.6); }
+  75%  { translate: calc(var(--amp) *  0.7) calc(var(--amp) * -0.7); rotate: calc(var(--rot) * -0.9); }
+  88%  { translate: calc(var(--amp) * -1.0) calc(var(--amp) * -0.2); rotate: calc(var(--rot) *  0.3); }
+  100% { translate: calc(var(--amp) *  0.6) calc(var(--amp) * -0.4); rotate: calc(var(--rot) *  0.5); }
+}
+
+/* Pseudo-random variety so neighbours drift out of sync */
+.jitter:nth-child(2n)   { --dur: 3.1s; --delay: -1.1s; }
+.jitter:nth-child(3n)   { --dur: 2.3s; --delay: -1.7s; --amp: 0.25px; }
+.jitter:nth-child(5n)   { --dur: 3.7s; --delay: -0.4s; --amp: 0.4px; }
+.jitter:nth-child(7n)   { --dur: 2.8s; --delay: -2.2s; --rot: 0.06deg; }
+.jitter:nth-child(11n)  { --dur: 3.4s; --delay: -0.7s; --amp: 0.45px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .jitter { animation: none; }
+}

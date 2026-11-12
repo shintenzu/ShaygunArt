@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Kennesaw State University",
+        "icon": "Design.png",
+        "logo":"Owl.png",
+        "location": "Kennesaw, GA",
+        "period":"2016-2025",
+        "GPA": 3.56,
+        "degree": "Bachelors Of Fine Arts",
+        "major":"Graphic Design"
+    },
+    {
+        "id": 2,
+        "name": "Kennesaw State University",
+        "icon": "Software.png",
+        "logo":"Owl.png",
+        "location": "Kennesaw, GA",
+        "period":"2008-2013",
+        "GPA": 3.56,
+        "degree": "Bachelors Of Science",
+        "major":"Software Engineering"
+    }
+    
+    
+]

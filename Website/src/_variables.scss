@@ -1,0 +1,77 @@
+$primary-teal: #00defe;
+$primary-red: #f2000d;
+$primary-white: #ececec;
+$primary-gold: #ffba41;
+$primary-dark: #181310ab;
+$primary-black: #000000;
+$primary-grey: #0f1011;
+$form-border: rgba(216, 216, 216, 0.295);
+$secondary-teal: #138f9a;
+$secondary-red: #d42932;
+
+$desktop-width: 1600px;
+$tablet-width: 1024px;
+$mobile-width: 800px;
+$font-primary: "silk-reg", sans-serif;
+$font-primary-alt1: "048", sans-serif;
+$font-primary-alt2: "0411", sans-serif;
+$font-primary-alt3: "0420", sans-serif;
+$font-primary-alt4: "0431", sans-serif;
+$font-form: "sarreg", sans-serif;
+$font-header: "mech", sans-serif;
+
+@font-face {
+  font-family: "mech"; /*Can be any text*/
+  src: url("./fonts/Mechsuit.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "silk-reg"; /*Can be any text*/
+  src: url("./fonts/slkscr.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "silk-bold"; /*Can be any text*/
+  src: url("./fonts/slkscreb.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "048"; /*Can be any text*/
+  src: url("./fonts/04b_08.ttf.woff") format("woff");
+}
+@font-face {
+  font-family: "0411"; /*Can be any text*/
+  src: url("./fonts/04b_11.ttf.woff") format("woff");
+}
+@font-face {
+  font-family: "0420"; /*Can be any text*/
+  src: url("./fonts/04b_20.ttf.woff") format("woff");
+}
+@font-face {
+  font-family: "0431"; /*Can be any text*/
+  src: url("./fonts/04b_31.ttf.woff") format("woff");
+}
+
+@font-face {
+  font-family: "sarsb"; /*Can be any text*/
+  src: url("./fonts/Sarpanch-SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "sarmed"; /*Can be any text*/
+  src: url("./fonts/Sarpanch-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "sarreg"; /*Can be any text*/
+  src: url("./fonts/Sarpanch-Regular.otf") format("opentype");
+}
+
+:root {
+  --color-primary-teal: #{$primary-teal};
+  --color-primary-red: #{$primary-red};
+  --color-primary-white: #{$primary-white};
+  --color-primary-gold: #{$primary-gold};
+  --color-secondary-teal: #{$secondary-teal};
+  --color-secondary-red: #{$secondary-red};
+  --font-primary: "silk-reg", sans-serif;
+  --font-header: "mech", sans-serif;
+}

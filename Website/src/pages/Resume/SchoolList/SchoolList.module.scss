@@ -1,0 +1,99 @@
+@use "../../../variables";
+
+.degreeBox {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 0;
+    margin-left: 1.75%;
+    align-items: stretch;
+    //border: 2px solid red;
+    padding: 1%;
+    padding-left: 0;
+    min-width: 0;
+
+    .degreeIcon {
+        flex: none;
+        container-type: size;
+        //border: 2px solid red;
+        aspect-ratio: 1.1/1;
+        padding-right: 2%;
+        img {
+            height: 0;
+            min-height: 100%;
+            aspect-ratio: 1 / 1; // width equals height
+            width: auto; // lets the ratio compute the width
+            flex: none; // stops the flex row from squashing the width
+            //object-fit: cover; // fills the square, cropping any extra
+            filter: drop-shadow(8px 8px 6px rgb(20, 5, 5));
+        }
+    }
+    .degree {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        .degreeTitle {
+            color: variables.$primary-teal;
+            --scale: 1.2;
+            font-size: clamp(0rem, calc(var(--scale) * 1.3vw), 5rem);
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .school {
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+            margin: 0;
+            padding-top: 2%;
+            //border: 3px solid red;
+            height: auto;
+            .schoolIcon {
+                flex: none;
+                container-type: size;
+                //border: 2px solid red;
+                aspect-ratio: 1.1/1;
+                padding-right: 2%;
+                img {
+                    height: 0;
+                    min-height: 100%;
+                    aspect-ratio: 1 / 1; // width equals height
+                    width: auto; // lets the ratio compute the width
+                    flex: none; // stops the flex row from squashing the width
+                    filter: drop-shadow(8px 8px 6px rgb(20, 5, 5));
+                    //object-fit: cover; // fills the square, cropping any extra
+                }
+            }
+            .schoolDetails {
+                padding-left: 2%;
+                display: flex;
+                flex-direction: column;
+
+                .schoolName,
+                .schoolCity,
+                .gpa {
+                    white-space: nowrap;
+                    --scale: 0.95;
+                    font-size: clamp(0.25rem, calc(var(--scale) * 1vw), 2rem);
+                    //border: 3px solid red;
+                }
+                .schoolName {
+                    color: variables.$primary-gold;
+                }
+                .schoolCity {
+                    color: variables.$primary-white;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .area {
+                    }
+                    .period {
+                    }
+                }
+                .gpa {
+                    font-size: clamp(0.5rem, calc((1.3vw) * var(--text-scale, 1)), 4rem);
+                    color: variables.$primary-red;
+                }
+            }
+        }
+    }
+}
