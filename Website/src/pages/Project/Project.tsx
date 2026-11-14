@@ -150,21 +150,83 @@ function Project({ name = "Projects" }: ProjectProps) {
                                     </div>
 
                                     <div ref={ref} className={`scrollFade ${styles.projectDesc}`}>
-                                        Cac Specialty. Is a project where I did a plenty of things and stuff that
-                                        occueres in tandom with the ninjas in the basement. DO not cry for the ninjas
-                                        know you and feel no fear. They feel no pain, they feel no passion. They are
-                                        simply here to take you and throw you into the eternal fire where the pains of
-                                        the world fall away and all that is left is silence and regret. Cac Specialty.
-                                        Is a project where I did a plenty of things and stuff that occueres in tandom
-                                        with the ninjas in the basement. DO not cry for the ninjas know you and feel no
-                                        fear. They feel no pain, they feel no passion. They are simply here to take you
-                                        and throw you into the eternal fire where the pains of the world fall away and
-                                        all that is left is silence and regret. Is a project where I did a plenty of
-                                        things and stuff that occueres in tandom with the ninjas in the basement. DO not
-                                        cry for the ninjas know you and feel no fear. They feel no pain, they feel no
-                                        passion. They are simply here to take you and throw you into the eternal fire
-                                        where the pains of the world fall away and all that is left is silence and
-                                        regret.
+                                        In consequat aliqua officia anim molestias vel.{" "}
+                                        <span className={`gold `}> Voluptatum ex mollit </span>
+                                        nostrud eu vel eligendi accusamus nulla id. Omnis in non in tempor consatur
+                                        quibusdam nobis.o
+                                        <br />
+                                        <br />
+                                        Imperdiet anim enim atque atque expedita et. Iusto fugiat
+                                        <span className={`teal`}> blanditiis commodo </span> vel ducimus commodo eiusmod
+                                        est quos quod. Eos quo atque aut cum in nobis eum.
+                                        <br />
+                                        <br />
+                                        Proident expedita facilis et tempor et eligendi et est occaecat praesentium. Ut
+                                        laborum quidem ducimus omnis tempore incididunt do. Aliquip exercitation quas
+                                        possimus harum est lorem est blanditiis repellendus non. Nisi et nihil cillum
+                                        libero nulla odio culpa proident quod pariatur occaecat sunt. Harum distinctio
+                                        cumque elit eligendi proident quos optio minim commodo minim.
+                                        <br />
+                                        <br />
+                                        Magna aliquip deserunt vel iusto fugiat. Occaecat dolore optio possimus{" "}
+                                        <span className={`red`}> nostrud sunt pariatur do </span> mollitia. Duis dolorem
+                                        qui sed quod repellendus quo. Et expedita enim officia sint rerum accusamus
+                                        libero sunt.
+                                        <br />
+                                        <br />
+                                        Vel nulla distinctio dignissimos officia iusto ad veniam. Pariatur dolor sint
+                                        nostrud id voluptate <span className={`gold`}> Voluptatum ex mollit </span>
+                                        quod mollitia quas. Libero nobis temporibus est fugiat aliquip molestias
+                                        eligendi nobis in. Ut qui proident nisi commodo accusamus aliqua voluptas quis
+                                        et maxime.
+                                        <br />
+                                        <br />
+                                        Quod est id quo aliqua consectetur praesentium voluptas. Duis do quibusdam
+                                        consequat vero minim aut molestias. Mollitia dolores
+                                        <span className={`teal`}> blanditiis commodo </span> tempor et minus occaecat
+                                        omnis fugiat excepturi amet quas. Qui officia fugiat duis atque omnis soluta
+                                        nobis rerum quo similique quis cupidatat.
+                                        <br />
+                                        <br />
+                                        Nobis omnis ipsum est quidem tempore id occaecat quibusdam distinctio. Ad
+                                        occaecat imperdiet culpa exercitation ea deserunt dolorem.{" "}
+                                        <span className={`red`}> nostrud sunt pariatur do </span> Placeat nobis rerum
+                                        vel aliquip vel vel aut id mollit. Pariatur nam laborum deleniti consequatur
+                                        anim reprehenderit veniam incididunt aliqua eligendi.
+                                        <br />
+                                        <br />
+                                        In consequat aliqua officia anim molestias vel. Voluptatum ex mollit nostrud eu
+                                        vel eligendi accusamus nulla id. Omnis in non in tempor consequatur quibusdam
+                                        nobis.
+                                        <br />
+                                        <br />
+                                        Imperdiet anim enim atque atque expedita et. Iusto fugiat blanditiis commodo vel
+                                        ducimus commodo eiusmod est quos quod. Eos quo atque aut cum in nobis eum.
+                                        <br />
+                                        <br />
+                                        Proident expedita facilis et tempor et eligendi et est occaecat praesentium. Ut
+                                        laborum quidem ducimus omnis tempore incididunt do. Aliquip exercitation quas
+                                        possimus harum est lorem est blanditiis repellendus non. Nisi et nihil cillum
+                                        libero nulla odio culpa proident quod pariatur occaecat sunt. Harum distinctio
+                                        cumque elit eligendi proident quos optio minim commodo minim.
+                                        <br />
+                                        <br />
+                                        Magna aliquip deserunt vel iusto fugiat. Occaecat dolore optio possimus nostrud
+                                        sunt pariatur do <span className={`red`}> nostrud sunt pariatur do </span>{" "}
+                                        mollitia. Duis dolorem qui sed quod repellendus quo. Et expedita enim officia
+                                        sint rerum accusamus libero sunt.
+                                        <br />
+                                        <br />
+                                        Vel nulla distinctio dignissimos officia iusto ad veniam. Pariatur dolor sint
+                                        nostrud id voluptate quod mollitia quas. Libero nobis temporibus est fugiat
+                                        aliquip molestias eligendi nobis in. Ut qui proident nisi commodo accusamus
+                                        aliqua voluptas quis et maxime.
+                                        <br />
+                                        <br />
+                                        Quod est id quo aliqua consectetur praesentium voluptas. Duis do quibusdam
+                                        consequat vero minim aut molestias. Mollitia dolores tempor et minus occaecat
+                                        omnis fugiat excepturi amet quas. Qui officia fugiat duis atque omnis soluta
+                                        nobis rerum quo similique quis cupidatat.
                                     </div>
                                 </div>
 
