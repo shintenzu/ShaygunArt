@@ -24,6 +24,7 @@ import Process from "./pages/Process/Process";
 import type { PowerState } from "./interfaces/Types";
 import { PowerContext } from "./hooks/PowerContext";
 import { ScrollCheck } from "./hooks/ScrollCheck";
+import { createHashRouter } from "react-router";
 
 export function Layout() {
     // const activate = () => setPower("on");
@@ -63,7 +64,7 @@ export function Layout() {
     );
 }
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: "/",
         element: <Layout />,
