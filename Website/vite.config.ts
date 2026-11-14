@@ -51,6 +51,7 @@ function saveMessages(): Plugin {
 
 
 export default defineConfig({
+  base: "/ShaygunArt/",
   plugins: [
     react(),
     tailwindcss(),
