@@ -1,33 +1,40 @@
-import React, { useState, useEffect, type CSSProperties } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+//import axios from "axios";
 import styles from "./Resume.module.scss";
-import { motion } from "motion/react";
-import TextType from "../../components/TypeText/TextType";
+//import { motion } from "motion/react";
+//import TextType from "../../components/TypeText/TextType";
 import "vault66-crt-effect/style.css";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
-import CyberBtn from "../../components/CyberBtn/CyberBtn";
+//import CyberBtn from "../../components/CyberBtn/CyberBtn";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import PageBox from "../../components/PageBox/PageBox";
 import ToolBox from "../../components/ToolBox/ToolBox";
 import SectionTab from "./SectionTab/SectionTab";
 import JobList from "./JobList/JobList";
 import SchoolList from "./SchoolList/SchoolList";
-import type { Tool, School, Job, Socials, Gallery, Project } from "../../interfaces/Types";
+import type {
+    Tool,
+    School,
+    Job,
+    //Socials,
+    //Gallery,
+    //Project
+} from "../../interfaces/Types";
 
 // Local JSON imports (adjust path to wherever your files live)
 import toolsData from "../../server/tools.json";
 import schoolsData from "../../server/schools.json";
 import jobsData from "../../server/jobs.json";
-import contactsData from "../../server/contacts.json";
-import galleryData from "../../server/gallery.json";
-import projectsData from "../../server/projects.json";
+//import contactsData from "../../server/contacts.json";
+//import galleryData from "../../server/gallery.json";
+//import projectsData from "../../server/projects.json";
 
 // Cast to your interfaces
 const tools = toolsData as Tool[];
 const schools = schoolsData as School[];
 const jobs = jobsData as Job[];
-const contacts = contactsData as Socials[];
-const gallery = galleryData as Gallery[];
+//const contacts = contactsData as Socials[];
+//const gallery = galleryData as Gallery[];
 //const projects = projectsData as Project[];
 
 interface ResumeProps {}
@@ -42,8 +49,8 @@ export default function Resume({}: ResumeProps) {
     // const [gallery, setGallery] = useState<Gallery[]>([]);
     // const [projects, setProjects] = useState<Project[]>([]);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    //const [loading, setLoading] = useState(true);
+    //const [error, setError] = useState<string | null>(null);
     const [current, setCurrent] = useState(0);
     const [shouldRender, setShouldRender] = useState(false);
     const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
@@ -97,7 +104,7 @@ export default function Resume({}: ResumeProps) {
     );
 
     const toolType = (cat: string) => {
-        return tools.filter((tool: Tool) => tool.cat === cat).map((tool: Tool, index) => toolSet(tool));
+        return tools.filter((tool: Tool) => tool.cat === cat).map((tool: Tool) => toolSet(tool));
     };
 
     const jobList = () => {

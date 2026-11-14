@@ -1,10 +1,8 @@
 import styles from "./About.module.scss";
-import { motion } from "motion/react";
 import "../../index.scss";
-import React, { useState, useEffect, type CSSProperties } from "react";
+import { useState, useEffect } from "react";
 import "vault66-crt-effect/style.css";
 import splash from "../../images/AboutSplash.png";
-import plus from "../../images/plus.png";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import PageBox from "../../components/PageBox/PageBox";

@@ -1,10 +1,7 @@
-import { Children, type ComponentPropsWithoutRef, type ComponentPropsWithRef } from "react";
+import { type ComponentPropsWithRef } from "react";
 import styles from "./CyberBorder.module.scss";
-import { motion } from "motion/react";
-import { useJitter } from "../../hooks/useJitter";
 import CRTBox from "../CRTBox/CRTBox";
 import JitterDiv from "../JitterDiv/JitterDiv";
-import plus from "../../images/plus.png";
 import bg from "../../images/HomeSplash.png";
 import project from "../../icons/Resume/Project.png";
 import wip from "../../icons/Resume/Process.png";
@@ -29,16 +26,15 @@ function CyberBorder({
     className = "",
     children,
     //ref = "",
-    style,
-    scale = 1,
-    color1 = "#FFFFFF00",
-    color2 = "#ffffff00",
+    //style,
+    //scale = 1,
+    //color1 = "#FFFFFF00",
+    //color2 = "#ffffff00",
     caption = "",
     id = "",
-    icon = "Project.png",
+    //icon = "Project.png",
     type = "",
     onClick,
-    ...rest
 }: CyberBorderProps) {
     const CRT_PROPS = {
         theme: "custom",
@@ -64,16 +60,15 @@ function CyberBorder({
         edgeGlowSize: 20,
     } as const;
 
-    const jitter = useJitter(scale);
-    const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
+    // const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
     // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
-    const images = Object.fromEntries(
-        Object.entries(imageModules).map(([path, module]) => {
-            const fileName = path.split("/").pop();
-            return [fileName, (module as any).default];
-        }),
-    );
+    // const images = Object.fromEntries(
+    //     Object.entries(imageModules).map(([path, module]) => {
+    //         const fileName = path.split("/").pop();
+    //         return [fileName, (module as any).default];
+    //     }),
+    // );
     return (
         // The JitterDiv IS the card: it keeps the positioning, ring and
         // drag logic. The CRT effect goes INSIDE it, around the content.

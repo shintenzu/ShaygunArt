@@ -1,8 +1,6 @@
 import styles from "./PageBox.module.scss";
-import { motion } from "motion/react";
-import { Children } from "react";
 import CRTEffect from "vault66-crt-effect";
-import type { ComponentPropsWithoutRef, ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { usePower } from "../../hooks/PowerContext";
 
 interface PageBoxProps extends ComponentPropsWithRef<"div"> {
@@ -53,7 +51,7 @@ function PageBox({ children, boxHeight = "auto", className = "", style, ...rest 
                 scanlineGap={4}
                 scanlineOrientation="horizontal"
             >
-                <div className={`${styles.home} ${className}`} style={{ height: `${boxHeight}` }}>
+                <div className={`${styles.home} ${className}`} style={{ height: `${boxHeight}` }} {...rest}>
                     {children}
                 </div>
             </CRTEffect>

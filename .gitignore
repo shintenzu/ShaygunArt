@@ -1,1 +1,7 @@
-node_modules
+node_modules/
+dist/
+Website/node_modules/
+Website/dist/
+Server/node_modules/
+Server/.env
+Website/src/server/messages/

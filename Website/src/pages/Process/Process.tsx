@@ -1,5 +1,4 @@
 import styles from "./Process.module.scss";
-import { motion } from "motion/react";
 
 interface ProcessProps {
     title?: string;

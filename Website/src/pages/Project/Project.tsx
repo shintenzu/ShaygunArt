@@ -1,9 +1,7 @@
 import styles from "./Project.module.scss";
-import { color, motion } from "motion/react";
-import React, { useState, useEffect, type CSSProperties } from "react";
+import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import "vault66-crt-effect/style.css";
-import JitterDiv from "../../components/JitterDiv/JitterDiv";
-import CyberBtn from "../../components/CyberBtn/CyberBtn";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import PageBox from "../../components/PageBox/PageBox";
 import design from "../../gallery/Design/CAC/Collateral/CACBannerDisplay.jpg";
@@ -14,7 +12,6 @@ import ps from "../../icons/Resume/Ps.png";
 import ai from "../../icons/Resume/Ai.png";
 import id from "../../icons/Resume/Id.png";
 import Return from "../../components/Return/Return";
-import CarouselOverlay from "../../components/CarouselOverlay/CarouselOverlay";
 
 interface ProjectProps {
     name?: string;
@@ -38,15 +35,15 @@ function getContrastColor(hexColor: string) {
 
 function Project({ name = "Projects" }: ProjectProps) {
     const ref = useScrollFade<HTMLDivElement>(20, 30);
-    const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
+    // const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
-    // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
-    const images = Object.fromEntries(
-        Object.entries(imageModules).map(([path, module]) => {
-            const fileName = path.split("/").pop();
-            return [fileName, (module as any).default];
-        }),
-    );
+    // // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
+    // const images = Object.fromEntries(
+    //     Object.entries(imageModules).map(([path, module]) => {
+    //         const fileName = path.split("/").pop();
+    //         return [fileName, (module as any).default];
+    //     }),
+    // );
 
     // Module level: runs once, so the array identity never changes between renders
     const galleryModules = import.meta.glob<string>("../../Gallery/**/*.{png,jpg,jpeg,svg}", {
@@ -77,19 +74,19 @@ function Project({ name = "Projects" }: ProjectProps) {
         />
     ));
 
-    const bPlusExpand = <img src={images[`BluePlus.png`]} className={`${styles.expand}  btn-grow`} />;
+    // const bPlusExpand = <img src={images[`BluePlus.png`]} className={`${styles.expand}  btn-grow`} />;
 
-    const jobExpand = (
-        <div className={`${styles.expand}`}>
-            <img src={images[`BlueCross.png`]} className={`btn-grow`} />
-        </div>
-    );
+    // const jobExpand = (
+    //     <div className={`${styles.expand}`}>
+    //         <img src={images[`BlueCross.png`]} className={`btn-grow`} />
+    //     </div>
+    // );
 
-    const toolSet = (logo: string) => (
-        <div className={`${styles.expand}`}>
-            <img src={images[`${logo}`]} className={`btn-grow`} />
-        </div>
-    );
+    // const toolSet = (logo: string) => (
+    //     <div className={`${styles.expand}`}>
+    //         <img src={images[`${logo}`]} className={`btn-grow`} />
+    //     </div>
+    // );
 
     const [shouldRender, setShouldRender] = useState(false);
 
@@ -207,14 +204,14 @@ function Project({ name = "Projects" }: ProjectProps) {
                                                     <div className={`${styles.primaryList}`}>
                                                         {Array.from({
                                                             length: 15,
-                                                        }).map((_, index) => (
+                                                        }).map(() => (
                                                             <p>Open Sans Bold</p>
                                                         ))}
                                                     </div>
                                                     <div className={`${styles.primaryList}`}>
                                                         {Array.from({
                                                             length: 15,
-                                                        }).map((_, index) => (
+                                                        }).map(() => (
                                                             <p>Open Sans Bold</p>
                                                         ))}
                                                     </div>

@@ -1,6 +1,6 @@
 import styles from "./Contact.module.scss";
-import { motion, scale } from "motion/react";
-import { useState, useEffect, type CSSProperties } from "react";
+import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import TextType from "../../components/TypeText/TextType";
 import "vault66-crt-effect/style.css";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
@@ -10,7 +10,7 @@ import PageBox from "../../components/PageBox/PageBox";
 import IconHeader from "../../components/IconHeader/IconHeader";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import { type Socials } from "../../interfaces/Types";
-import axios from "axios";
+//import axios from "axios";
 
 import contactsData from "../../server/contacts.json";
 const contacts = contactsData as Socials[];

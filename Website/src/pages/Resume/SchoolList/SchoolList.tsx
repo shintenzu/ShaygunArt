@@ -1,11 +1,4 @@
-import React, {
-    useState,
-    useEffect,
-    type CSSProperties,
-    type ComponentPropsWithRef,
-    type ReactNode,
-    Children,
-} from "react";
+import { type ComponentPropsWithRef } from "react";
 import styles from "./SchoolList.module.scss";
 import "vault66-crt-effect/style.css";
 import type { School } from "../../../interfaces/Types";

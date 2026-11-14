@@ -1,17 +1,14 @@
 import styles from "./Portfolio.module.scss";
-import { motion } from "motion/react";
-import React, { useState, useEffect, type CSSProperties } from "react";
-import TextType from "../../components/TypeText/TextType";
+import { useState, useEffect } from "react";
 import "vault66-crt-effect/style.css";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
-import CyberBtn from "../../components/CyberBtn/CyberBtn";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import PageBox from "../../components/PageBox/PageBox";
 import CardCarousel from "../../components/Cardcarousel/CardCarousel";
 import CyberBorder from "../../components/CyberBorder/CyberBorder";
 import { usePower } from "../../hooks/PowerContext";
 import { useNavigate } from "react-router";
-import axios from "axios";
+//import axios from "axios";
 import Legend from "./Legend/Legend";
 
 interface PortfolioProps {}
@@ -27,15 +24,15 @@ export default function Portfolio({}: PortfolioProps) {
             setPower("on"); // TV turns back on
         }, 200);
     };
-    const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
+    // const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
-    // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
-    const images = Object.fromEntries(
-        Object.entries(imageModules).map(([path, module]) => {
-            const fileName = path.split("/").pop();
-            return [fileName, (module as any).default];
-        }),
-    );
+    // // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
+    // const images = Object.fromEntries(
+    //     Object.entries(imageModules).map(([path, module]) => {
+    //         const fileName = path.split("/").pop();
+    //         return [fileName, (module as any).default];
+    //     }),
+    // );
 
     // Module level: runs once, so the array identity never changes between renders
     const galleryModules = import.meta.glob<string>("../../Gallery/**/*.{png,jpg,jpeg,svg}", {

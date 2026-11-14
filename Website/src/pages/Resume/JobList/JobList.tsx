@@ -1,17 +1,8 @@
-import React, {
-    useState,
-    useEffect,
-    type CSSProperties,
-    type ComponentPropsWithRef,
-    type ReactNode,
-    Children,
-} from "react";
-import axios from "axios";
+import { useState, type ComponentPropsWithRef } from "react";
+//import axios from "axios";
 import styles from "./JobList.module.scss";
-import { motion } from "motion/react";
-import TextType from "../../../components/TypeText/TextType";
 import "vault66-crt-effect/style.css";
-import type { Tool, School, Job, Contact, Gallery, Project } from "../../../interfaces/Types";
+import type { Job } from "../../../interfaces/Types";
 import JitterDiv from "../../../components/JitterDiv/JitterDiv";
 
 interface JobListProps extends ComponentPropsWithRef<"div"> {

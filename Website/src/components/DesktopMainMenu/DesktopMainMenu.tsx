@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import MenuButton from "./MenuButton/MenuButton";
 import logo from "../../images/TransparentLogo.png";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
-import type { PowerState } from "../../interfaces/Types";
 import { usePower } from "../../hooks/PowerContext";
 import { useNavigate, useLocation } from "react-router";
 

@@ -1,5 +1,4 @@
 import styles from "./ContactForm.module.scss";
-import { motion } from "motion/react";
 import CyberBtn from "../CyberBtn/CyberBtn";
 import JitterDiv from "../JitterDiv/JitterDiv";
 import { useState } from "react";

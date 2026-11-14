@@ -2,7 +2,6 @@ import styles from "./IconHeader.module.scss";
 import { motion } from "motion/react";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
 import { useGlitch } from "react-powerglitch";
-import draw from "../../images/Draw.png";
 
 interface IconHeaderProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     title: string;
@@ -21,7 +20,6 @@ function IconHeader({
     hcolor = "#FFFFFF",
     glitch = true,
     className = "",
-    ...rest
 }: IconHeaderProps) {
     const clickGlitch = useGlitch({
         playMode: "hover",
@@ -54,7 +52,7 @@ function IconHeader({
         pulse: false,
     });
     return (
-        <JitterDiv className={`${styles.container}`}>
+        <JitterDiv className={`${styles.container} ${className}`}>
             <motion.div
                 className={`${styles.skill1}`}
                 style={{ color: `${hcolor}`, paddingLeft: `${pad}%` }}

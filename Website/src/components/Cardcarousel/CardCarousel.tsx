@@ -14,7 +14,7 @@ import JitterDiv from "../JitterDiv/JitterDiv";
 import CRTBox from "../CRTBox/CRTBox";
 import left from "../../icons/common/left.png";
 import right from "../../icons/common/right.png";
-import CarouselOverlay from "../CarouselOverlay/CarouselOverlay";
+//import CarouselOverlay from "../CarouselOverlay/CarouselOverlay";
 
 export interface CardCarouselProps {
     /** Anything you like: each item is rendered inside its own card */
@@ -90,7 +90,10 @@ export default function CardCarousel({
     const [position, setPosition] = useState(startIndex);
     const [dragging, setDragging] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
-    const [flatten, setFlatten] = useState(false);
+    const [
+        flatten,
+        //setFlatten
+    ] = useState(false);
 
     const posRef = useRef(startIndex); // always the latest position
     const targetRef = useRef(startIndex); // where the slide animation is heading

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import "./LoadingBar.scss";
-import CRTTV from "./../CRTTV/CRTTV";
 
 interface LoadingBarProps {
     /** Image URLs to preload and count toward progress */

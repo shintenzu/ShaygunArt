@@ -1,20 +1,16 @@
 import styles from "./CarouselOverlay.module.scss";
-import { motion } from "motion/react";
-import CardCarousel, { type CardCarouselProps } from "../Cardcarousel/CardCarousel";
+
 import {
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-    type CSSProperties,
-    type KeyboardEvent,
-    type MouseEvent,
-    type PointerEvent,
+    //useCallback,
+    //useEffect,
+    //useRef,
+    //useState,
+    // type CSSProperties,
+    // type KeyboardEvent,
+    // type MouseEvent,    // type PointerEvent,
     type ReactNode,
 } from "react";
 //import styles from "./CardCarousel.module.scss";
-import JitterDiv from "../JitterDiv/JitterDiv";
-import CRTBox from "../CRTBox/CRTBox";
 
 interface CarouselOverlayProps {
     item: ReactNode;
@@ -36,11 +32,11 @@ function CarouselOverlay({
     // All props are received from parent CardCarousel
     item,
     //items,
-    visible,
-    spread,
-    edgeScale,
-    startIndex,
-    className,
+    // visible,
+    // spread,
+    // edgeScale,
+    // startIndex,
+    // className,
     show = true,
     //flatten = true,
 }: CarouselOverlayProps) {

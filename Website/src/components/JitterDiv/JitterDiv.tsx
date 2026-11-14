@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { useJitter } from "../../hooks/useJitter";
 import "./jitter.css";
 

@@ -1,5 +1,4 @@
 import styles from "./ImageSplash.module.scss";
-import { motion } from "motion/react";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
 import CRTEffect from "vault66-crt-effect";
 import { useGlitch } from "react-powerglitch";

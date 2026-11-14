@@ -1,5 +1,4 @@
 import styles from "./RBorder.module.scss";
-import { motion } from "motion/react";
 
 interface RBorderProps {
     title: string;

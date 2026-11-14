@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
-import { motion, scale } from "motion/react";
-import React, { useState, useEffect, type CSSProperties } from "react";
+import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import TextType from "../../components/TypeText/TextType";
 import "vault66-crt-effect/style.css";
 import splash from "../../images/HomeSplash.png";
@@ -16,7 +16,7 @@ import splash1 from "../../images/HomeSplashPixel1.png";
 import IconHeader from "../../components/IconHeader/IconHeader";
 import { useNavigate } from "react-router";
 import { type Socials } from "../../interfaces/Types";
-import axios from "axios";
+//import axios from "axios";
 
 import contactsData from "../../server/contacts.json";
 const contacts = contactsData as Socials[];

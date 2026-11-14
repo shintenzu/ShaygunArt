@@ -11,16 +11,7 @@ interface CyberBtnProps extends React.ComponentProps<"button"> {
     onClick?: () => void;
 }
 
-export default function CyberBtn({
-    title,
-    subtitle = "",
-    hue = 0,
-    tag = "",
-    page = "/",
-    type = "button",
-    onClick,
-    ...props
-}: CyberBtnProps) {
+export default function CyberBtn({ title, subtitle = "", hue = 0, tag = "", type = "button", onClick }: CyberBtnProps) {
     //const navigate = useNavigate();
     return (
         <>

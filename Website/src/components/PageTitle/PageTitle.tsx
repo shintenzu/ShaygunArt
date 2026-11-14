@@ -1,5 +1,4 @@
 import styles from "./PageTitle.module.scss";
-import { motion } from "motion/react";
 import CRTEffect from "vault66-crt-effect";
 import StrokeText from "../../components/StrokeText/StrokeText";
 import type { ComponentPropsWithoutRef } from "react";

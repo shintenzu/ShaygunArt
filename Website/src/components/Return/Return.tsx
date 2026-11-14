@@ -3,18 +3,16 @@ import "vault66-crt-effect/style.css";
 import JitterDiv from "../../components/JitterDiv/JitterDiv";
 import CRTEffect from "vault66-crt-effect";
 import ret from "../../icons/Resume/Return.png";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import { usePower } from "../../hooks/PowerContext";
 
 interface ReturnProps extends React.ComponentProps<"button"> {
-    title?: string;
     onClick?: () => void;
 }
 
-export default function Return({ title = "", className, children, onClick }: ReturnProps) {
+export default function Return({ className, children, onClick }: ReturnProps) {
     const navigate = useNavigate();
     const { setPower } = usePower();
-    const location = useLocation();
 
     const go = (path: string) => {
         setPower("off"); // TV shuts off

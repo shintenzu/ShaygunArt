@@ -1,4 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import {
+    useEffect,
+    useRef,
+    //useState
+} from "react";
 import "./CRTTV.scss";
 
 type PowerState = "idle" | "on" | "off";
@@ -12,7 +16,7 @@ export interface CRTTVProps {
     setPower: (state: PowerState) => void; // takes a value, returns nothing
 }
 
-const DEFAULT_ITEMS: string[] = ["Picture", "Sound", "About", "Contact"];
+//const DEFAULT_ITEMS: string[] = ["Picture", "Sound", "About", "Contact"];
 const GLITCH_LAYERS = 5; // original pen clones the "AV-1" span 4 extra times
 
 // Fill the canvas with random grayscale-alpha noise
@@ -36,7 +40,7 @@ export default function CRTTV({
 }: CRTTVProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     //const [power, setPower] = useState<PowerState>("idle");
-    const [activeIndex, setActiveIndex] = useState<number>(0);
+    //const [activeIndex, setActiveIndex] = useState<number>(0);
 
     // Size the canvas once on mount (same math as the original pen)
     useEffect(() => {

@@ -5,14 +5,10 @@ import type { ComponentPropsWithRef } from "react";
 
 interface MenuButtonProps extends ComponentPropsWithRef<"div"> {
     name: string;
-    active?: boolean;
     onClick?: () => void;
 }
 
-export default function MenuButton({ name, active = false, onClick = () => {}, style }: MenuButtonProps) {
-    const handleClick = () => {
-        onClick();
-    };
+export default function MenuButton({ name, onClick = () => {}, style }: MenuButtonProps) {
     return (
         <JitterDiv className={`${styles.MenuButton} crt`}>
             <motion.button
