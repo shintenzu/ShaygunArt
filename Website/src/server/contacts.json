@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Phone",
+        "info": "(Available on request)",
+        "url" : "Icon5.png",
+        "link": "Null"
+    },
+    {
+        "id": 2,
+        "name": "GMail",
+        "info": "Shaygunart@gmail.com",
+        "url" : "Icon2.png",
+        "link": "Null"
+    },
+    {
+        "id": 3,
+        "name": "Discord",
+        "info": "Akachi.Tenzu",
+        "url" : "Icon8.png",
+        "link": "https://discordapp.com/users/95108400056107008"
+    },
+    {
+        "id": 4,
+        "name": "LinkedIn",
+        "info": "Linkedin.com/in/shaygun-o",
+        "url" : "Icon3.png",
+        "link": "https://www.linkedin.com/in/shaygun-o/"
+    },
+    {
+        "id": 5,
+        "name": "GitHub",
+        "info": "Github.com/shintenzu",
+        "url" : "Icon6.png",
+        "link": "https://github.com/shintenzu"
+    },
+    {
+        "id": 6,
+        "name": "YouTube",
+        "info": "Youtube.com/@seguno9185",
+        "url" : "Icon7.png",
+        "link": "https://www.youtube.com/@seguno9185"
+    },
+    {
+        "id": 7,
+        "name": "ArtStation",
+        "info": "Artstation.com/akachi",
+        "url" : "Icon4.png",
+        "link": "https://www.artstation.com/akachi"
+    }
+]

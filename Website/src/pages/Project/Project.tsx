@@ -13,6 +13,8 @@ import { useScrollFade } from "../../hooks/useScrollFade";
 import ps from "../../icons/Resume/Ps.png";
 import ai from "../../icons/Resume/Ai.png";
 import id from "../../icons/Resume/Id.png";
+import Return from "../../components/Return/Return";
+import CarouselOverlay from "../../components/CarouselOverlay/CarouselOverlay";
 
 interface ProjectProps {
     name?: string;
@@ -34,7 +36,7 @@ function getContrastColor(hexColor: string) {
     return luminance > 0.5 ? "#000000" : "#ffffff";
 }
 
-function Project({ name = "Project Template" }: ProjectProps) {
+function Project({ name = "Projects" }: ProjectProps) {
     const ref = useScrollFade<HTMLDivElement>(20, 30);
     const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
@@ -125,16 +127,18 @@ function Project({ name = "Project Template" }: ProjectProps) {
         <>
             {/* Section Container*/}
             {shouldRender && (
-                <PageBox>
-                    {/* does not render contents until animation completes */}
+                <>
+                    <PageBox>
+                        {/* does not render contents until animation completes */}
 
-                    <>
                         {/* Page contents */}
 
                         <div className={`${styles.content}`}>
                             <div className={`${styles.top} `}>
                                 {/* Page title */}
+
                                 <PageTitle size1={60} title={name} className={`${styles.title} `} />
+                                <Return className={`${styles.return}`}>Return to Portfolio</Return>
                             </div>
 
                             {/* Skills */}
@@ -197,7 +201,7 @@ function Project({ name = "Project Template" }: ProjectProps) {
                                             <div className={`${styles.typeColumn}`}>
                                                 <div className={`${styles.typeHeader}`}>
                                                     <p className={`${styles.primaryHeader}`}>Primary Type</p>
-                                                    <p className={`${styles.primaryHeader}`}>Primary Type</p>
+                                                    <p className={`${styles.primaryHeader}`}>Secondary Type</p>
                                                 </div>
                                                 <div ref={ref} className={`scrollFade ${styles.typeList}`}>
                                                     <div className={`${styles.primaryList}`}>
@@ -267,10 +271,10 @@ function Project({ name = "Project Template" }: ProjectProps) {
                                 </div>
                             </div>
                         </div>
-                    </>
 
-                    <motion.ul initial={{ y: 10 }} animate={{ y: 0 }} transition={{ duration: 0 }}></motion.ul>
-                </PageBox>
+                        <motion.ul initial={{ y: 10 }} animate={{ y: 0 }} transition={{ duration: 0 }}></motion.ul>
+                    </PageBox>
+                </>
             )}
         </>
     );

@@ -12,22 +12,26 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import { type Socials } from "../../interfaces/Types";
 import axios from "axios";
 
+import contactsData from "../../server/contacts.json";
+const contacts = contactsData as Socials[];
+
 interface ContactProps {}
 
 function Contact({}: ContactProps) {
-    const [contacts, setContacts] = useState<Socials[]>([]);
-    const fetchData = async () => {
-        try {
-            const [contectRes] = await Promise.all([axios.get("http://localhost:8080/data/contacts")]);
-            setContacts(contectRes.data);
-        } catch (err) {
-            console.error("Error loading contacts", err);
-        } finally {
-        }
-    };
-    useEffect(() => {
-        fetchData();
-    }, []);
+    //Old Server Imports
+    // const [contacts, setContacts] = useState<Socials[]>([]);
+    // const fetchData = async () => {
+    //     try {
+    //         const [contectRes] = await Promise.all([axios.get("http://localhost:8080/data/contacts")]);
+    //         setContacts(contectRes.data);
+    //     } catch (err) {
+    //         console.error("Error loading contacts", err);
+    //     } finally {
+    //     }
+    // };
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     const imageModules = import.meta.glob("../../icons/*.{png,jpg,jpeg,svg}", { eager: true });
 

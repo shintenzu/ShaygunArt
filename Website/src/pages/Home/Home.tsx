@@ -18,22 +18,25 @@ import { useNavigate } from "react-router";
 import { type Socials } from "../../interfaces/Types";
 import axios from "axios";
 
+import contactsData from "../../server/contacts.json";
+const contacts = contactsData as Socials[];
+
 interface HomeProps {}
 
 function Home({}: HomeProps) {
-    const [contacts, setContacts] = useState<Socials[]>([]);
-    const fetchData = async () => {
-        try {
-            const [contectRes] = await Promise.all([axios.get("http://localhost:8080/data/contacts")]);
-            setContacts(contectRes.data);
-        } catch (err) {
-            console.error("Error loading contacts", err);
-        } finally {
-        }
-    };
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // const [contacts, setContacts] = useState<Socials[]>([]);
+    // const fetchData = async () => {
+    //     try {
+    //         const [contectRes] = await Promise.all([axios.get("http://localhost:8080/data/contacts")]);
+    //         setContacts(contectRes.data);
+    //     } catch (err) {
+    //         console.error("Error loading contacts", err);
+    //     } finally {
+    //     }
+    // };
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     const imageModules = import.meta.glob("../../icons/*.{png,jpg,jpeg,svg}", { eager: true });
 

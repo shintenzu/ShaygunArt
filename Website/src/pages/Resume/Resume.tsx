@@ -14,20 +14,38 @@ import JobList from "./JobList/JobList";
 import SchoolList from "./SchoolList/SchoolList";
 import type { Tool, School, Job, Socials, Gallery, Project } from "../../interfaces/Types";
 
+// Local JSON imports (adjust path to wherever your files live)
+import toolsData from "../../server/tools.json";
+import schoolsData from "../../server/schools.json";
+import jobsData from "../../server/jobs.json";
+import contactsData from "../../server/contacts.json";
+import galleryData from "../../server/gallery.json";
+import projectsData from "../../server/projects.json";
+
+// Cast to your interfaces
+const tools = toolsData as Tool[];
+const schools = schoolsData as School[];
+const jobs = jobsData as Job[];
+const contacts = contactsData as Socials[];
+const gallery = galleryData as Gallery[];
+//const projects = projectsData as Project[];
+
 interface ResumeProps {}
 
 export default function Resume({}: ResumeProps) {
-    const [tools, setTools] = useState<Tool[]>([]);
-    const [schools, setSchools] = useState<School[]>([]);
-    const [jobs, setJobs] = useState<Job[]>([]);
-    const [contacts, setContacts] = useState<Socials[]>([]);
-    const [gallery, setGallery] = useState<Gallery[]>([]);
-    const [projects, setProjects] = useState<Project[]>([]);
+    // Local server import syste.
+
+    // const [tools, setTools] = useState<Tool[]>([]);
+    // const [schools, setSchools] = useState<School[]>([]);
+    // const [jobs, setJobs] = useState<Job[]>([]);
+    // const [contacts, setContacts] = useState<Socials[]>([]);
+    // const [gallery, setGallery] = useState<Gallery[]>([]);
+    // const [projects, setProjects] = useState<Project[]>([]);
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [current, setCurrent] = useState(0);
     const [shouldRender, setShouldRender] = useState(false);
-
     const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
     // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
@@ -37,35 +55,36 @@ export default function Resume({}: ResumeProps) {
             return [fileName, (module as any).default];
         }),
     );
-    const fetchData = async () => {
-        try {
-            const [toolsRes, schoolsRes, jobsRes, contactsRes, galleryRes, projectsRes] = await Promise.all([
-                axios.get("http://localhost:8080/data/tools"),
-                axios.get("http://localhost:8080/data/schools"),
-                axios.get("http://localhost:8080/data/jobs"),
-                axios.get("http://localhost:8080/data/contacts"),
-                axios.get("http://localhost:8080/data/gallery"),
-                axios.get("http://localhost:8080/data/projects"),
-            ]);
-            setTools(toolsRes.data);
-            setSchools(schoolsRes.data);
-            setJobs(jobsRes.data);
-            setContacts(contactsRes.data);
-            setGallery(galleryRes.data);
-            setProjects(projectsRes.data);
-            console.log("tools:", tools, "schools:", schools, "jobs:", jobs);
-        } catch (err) {
-            console.error("Error fetching data:", err);
-            setError("Failed to load resume data.");
-        } finally {
-            setLoading(false);
-            setShouldRender(true);
-        }
-    };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // const fetchData = async () => {
+    //     try {
+    //         const [toolsRes, schoolsRes, jobsRes, contactsRes, galleryRes, projectsRes] = await Promise.all([
+    //             axios.get("http://localhost:8080/data/tools"),
+    //             axios.get("http://localhost:8080/data/schools"),
+    //             axios.get("http://localhost:8080/data/jobs"),
+    //             axios.get("http://localhost:8080/data/contacts"),
+    //             axios.get("http://localhost:8080/data/gallery"),
+    //             axios.get("http://localhost:8080/data/projects"),
+    //         ]);
+    //         setTools(toolsRes.data);
+    //         setSchools(schoolsRes.data);
+    //         setJobs(jobsRes.data);
+    //         setContacts(contactsRes.data);
+    //         setGallery(galleryRes.data);
+    //         setProjects(projectsRes.data);
+    //         console.log("tools:", tools, "schools:", schools, "jobs:", jobs);
+    //     } catch (err) {
+    //         console.error("Error fetching data:", err);
+    //         setError("Failed to load resume data.");
+    //     } finally {
+    //         setLoading(false);
+    //         setShouldRender(true);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     const currentTool = tools[current];
 
@@ -82,26 +101,18 @@ export default function Resume({}: ResumeProps) {
     };
 
     const jobList = () => {
-        return jobs.map((_, index) => <JobList job={jobs[index]} />);
+        return jobs.map((_, index) => <JobList key={jobs[index].id} job={jobs[index]} />);
     };
 
-    const StaticDownload = () => {
-        return (
-            <a href="/sample-report.pdf" download="Annual_Report.pdf">
-                Download Report
-            </a>
-        );
-    };
+    useEffect(() => {
+        // Set a timer to change the state after 3000ms (3 seconds)
+        const timer = setTimeout(() => {
+            setShouldRender(true);
+        }, 100);
 
-    // useEffect(() => {
-    //     // Set a timer to change the state after 3000ms (3 seconds)
-    //     const timer = setTimeout(() => {
-    //         setShouldRender(true);
-    //     }, 100);
-
-    //     // Clean up the timer if the component unmounts before the delay finishes
-    //     return () => clearTimeout(timer);
-    // }, []);
+        // Clean up the timer if the component unmounts before the delay finishes
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <>

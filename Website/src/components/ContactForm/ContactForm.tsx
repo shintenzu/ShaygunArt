@@ -36,14 +36,26 @@ function ContactForm({ title }: ContactFormProps) {
         }
         setStatus("sending");
         try {
-            const res = await fetch("http://localhost:8080/api/contact", {
+            //Old server import!
+
+            // const res = await fetch("http://localhost:8080/api/contact", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify({ name, email, phone, subject, message }),
+            // });
+            // if (!res.ok) {
+            //     throw new Error(`Server Responded $(res.status)`);
+            // }
+
+            const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, phone, subject, message }),
             });
             if (!res.ok) {
-                throw new Error(`Server Responded $(res.status)`);
+                throw new Error(`Server responded ${res.status}`);
             }
+
             clear();
             setStatus("success");
         } catch (err) {

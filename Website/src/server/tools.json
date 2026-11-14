@@ -1,0 +1,153 @@
+[
+    {
+        "id": 1,
+        "cat":"Design",
+        "name": "Adobe Photoshop",
+        "icon": "Ps.png",
+        "exp": 13,
+        "pref": 5,
+        "desc" :"Adobe Photoshop is a proprietary raster graphics editor developed and published by Adobe for Windows and macOS. It was created in 1987 by Thomas and John Knoll. It is the most used tool for professional digital art, especially in raster graphics editing, and its name has become genericised as a verb (e.g., to 'photoshop' an image, 'photoshopping', and 'photoshop contest') although Adobe disapproves of such use."
+
+    },
+    {
+        "id": 2,
+        "cat":"Design",
+        "name": "Adobe Illustrator",
+        "icon": "Ai.png",
+        "exp": 13,
+        "pref": 5,
+        "desc" :"Adobe Illustrator is a vector graphics editor and design software developed and marketed by Adobe. Originally designed for the Apple Macintosh, development of Adobe Illustrator began in 1985. Along with Creative Cloud (Adobe's shift to a monthly or annual subscription service delivered over the Internet), Illustrator CC was released. The latest version, Illustrator 2026, was released on October 28, 2025, and is the 30th generation in the product line."
+
+    },
+    {
+        "id": 3,
+        "cat":"Design",
+        "name": "Adobe Indesign",
+        "icon": "Id.png",
+        "exp": 13,
+        "pref": 5,
+        "desc" :"Adobe InDesign is a desktop publishing and page layout designing software application produced by Adobe and first released in 1999. It can be used to create works such as posters, flyers, brochures, magazines, newspapers, presentations, books and ebooks. InDesign can also publish content suitable for tablet devices in conjunction with Adobe Digital Publishing Suite. Graphic designers and production artists are the principal users."
+
+    },
+    {
+        "id": 4,
+        "cat":"Design",
+        "name": "Adobe Premiere",
+        "icon": "Pr.png",
+        "exp": 8,
+        "pref": 4,
+        "desc" :"Adobe Premiere (originally released in 1991 and called Adobe Premiere Pro between August 2003 and January 2026) is a video editing application developed by Adobe and distributed as part of the Adobe Creative Cloud suite. It is used for producing video content across various industries"
+
+    },
+    {
+        "id": 5,
+        "cat":"Design",
+        "name": "Adobe Creative Cloud",
+        "icon": "Cd.png",
+        "exp": 13,
+        "pref": 5,
+        "desc" :"Adobe Creative Cloud is a set of applications and services from Adobe that gives subscribers access to a collection of software used for graphic design, video editing, web development, photography, along with a set of mobile applications and also some optional cloud services. In Creative Cloud (CC), a monthly or annual subscription service is delivered over the Internet. Software from Creative Cloud is downloaded from the Internet, installed directly on a local computer and used as long as the subscription remains valid. Online updates and multiple languages are included in the CC subscription. Creative Cloud was initially hosted on Amazon Web Services, but an agreement with Microsoft led to the software being hosted on Microsoft Azure beginning in 2017"
+
+    },
+    {
+        "id": 6,
+        "cat":"AI",
+        "name": "Stable Diffusion",
+        "icon": "StableDiffusion.png",
+        "exp": 3,
+        "pref": 5,
+        "desc" :"Stable Diffusion is a deep learning, text-to-image model released in 2022 based on diffusion techniques. The generative AI technology is the premier product of Stability AI and is considered to be a part of the ongoing AI boom.\n\nIt is primarily used to generate detailed images conditioned on text descriptions, though it can also be applied to other tasks such as inpainting, outpainting, and generating image-to-image translations guided by a text prompt. Its development involved researchers from the CompVis Group at LMU Munich and Runway with a computational donation from Stability and training data from non-profit organizations.\n\nStable Diffusion is a latent diffusion model, a kind of deep generative artificial neural network. Its code and model weights have been released publicly, and an optimized version can run on most consumer hardware equipped with a modest GPU with as little as 2.4 GB VRAM. This marked a departure from previous proprietary text-to-image models such as DALL-E and Midjourney, which were accessible only via cloud services."
+
+    },
+    {
+        "id": 7,
+        "cat":"AI",
+        "name": "Stable Diffusion XL",
+        "icon": "SDXL.png",
+        "exp": 2,
+        "pref": 5,
+        "desc" :"The XL version uses the same LDM architecture as previous versions, except larger: larger UNet backbone, larger cross-attention context,[clarification needed] two text encoders instead of one, and trained on multiple aspect ratios (not just the square aspect ratio like previous versions).\n\nThe SD XL Refiner, released at the same time, has the same architecture as SD XL, but it was trained for adding fine details to preexisting images via text-conditional img2img."
+
+    },
+    {
+        "id": 8,
+        "cat":"AI",
+        "name": "ComfyUI",
+        "icon": "ComfyUI.png",
+        "exp": 2,
+        "pref": 4,
+        "desc" :"ComfyUI is an open-source, node-based program that allows users to generate images from a series of text prompts. It uses free diffusion models such as Stable Diffusion as the base model for its image capabilities combined with other tools such as ControlNet and LCM low-rank adaptation, with each tool being represented by a node in the program."
+
+    },
+    {
+        "id": 9,
+        "cat":"AI",
+        "name": "Automatic 1111: Stable Diffusion",
+        "icon": "A1111.png",
+        "exp": 3,
+        "pref": 5,
+        "desc" :"AUTOMATIC1111 Stable Diffusion Web UI (SD WebUI, A1111, or Automatic1111) is an open source generative artificial intelligence program that allows users to generate images from a text prompt. It uses Stable Diffusion as the base model for its image capabilities together with a large set of extensions and features to customize its output"
+
+    },
+    {
+        "id": 10,
+        "cat":"AI",
+        "name": "Adobe Firefly",
+        "icon": "Fi.png",
+        "exp": 2,
+        "pref": 3,
+        "desc" :"Adobe Firefly is a web app and set of generative artificial intelligence models for creative production offered by Adobe Inc.. Its capabilities include text-to-image and text-to-video, image-to-video, generate speech, generate soundtrack and, generate sound effects and alter speech.\n\nIt is part of Adobe Creative Cloud, and is used in other Creative Cloud apps, including Photoshop, Premiere Pro, and InDesign. Firefly is available via subscription plans that use monthly credits based on the type of AI being used.\n\nFirefly is trained with images from Creative Commons, Wikimedia and Flickr Commons as well as 300 million images and videos in Adobe Stock and the public domain.[4][5][6] Adobe has marketed Firefly's output as 'commercially safe' due to the company's claims about the models' training data. In April 2024, Bloomberg reported that Firefly was also trained on Midjourney and other competitors' images, which Adobe had not clearly disclosed.\n\nFirefly for Enterprise was released on June 22, 2023"
+
+    },
+    {
+        "id": 11,
+        "cat":"Web",
+        "name": "WordPress",
+        "icon": "WordPress.png",
+        "exp": 6,
+        "pref": 5,
+        "desc" :"WordPress (WP, or WordPress.org) is a web content management system. It was originally created as a tool to publish blogs but has evolved to support publishing other web content, including more traditional websites, mailing lists, Internet forums, media galleries, membership sites, learning management systems, and online stores. Available as free and open-source software, WordPress is among the most popular content management systems, it was used by 22.52% of the top one million websites as of December 2024.\n\nWordPress is written in the PHP programming language and paired with a MySQL or MariaDB database.[6] Features include a plugin architecture and a template system, known as 'themes'. Since 2018, WordPress has included a block-based editor ('Gutenberg').\n\nTo function, WordPress has to be installed on a web server, either as part of an Internet hosting service or on a personal computer.\n\nWordPress was first released on May 27, 2003, by its founders, American developer Matt Mullenweg and English developer Mike Little.[8] The WordPress Foundation owns WordPress, WordPress projects, and other related trademarks"
+
+    },
+    {
+        "id": 12,
+        "cat":"Web",
+        "name": "HubSpot",
+        "icon": "HubSpot.png",
+        "exp": 6,
+        "pref": 5,
+        "desc" :"WordPress (WP, or WordPress.org) is a web content management system. It was originally created as a tool to publish blogs but has evolved to support publishing other web content, including more traditional websites, mailing lists, Internet forums, media galleries, membership sites, learning management systems, and online stores. Available as free and open-source software, WordPress is among the most popular content management systems, it was used by 22.52% of the top one million websites as of December 2024.\n\nWordPress is written in the PHP programming language and paired with a MySQL or MariaDB database.[6] Features include a plugin architecture and a template system, known as 'themes'. Since 2018, WordPress has included a block-based editor ('Gutenberg').\n\nTo function, WordPress has to be installed on a web server, either as part of an Internet hosting service or on a personal computer.\n\nWordPress was first released on May 27, 2003, by its founders, American developer Matt Mullenweg and English developer Mike Little.[8] The WordPress Foundation owns WordPress, WordPress projects, and other related trademarks"
+
+    },
+    {
+        "id": 13,
+        "cat":"Web",
+        "name": "Constant Contact",
+        "icon": "ConstantContact.png",
+        "exp": 3,
+        "pref": 5,
+        "desc" :"Constant Contact, Inc. is an online marketing company, headquartered in Waltham, Massachusetts, with additional offices in Boston, Massachusetts; Loveland, Colorado; Gainesville, Florida; Los Angeles, California; Brisbane, Australia; Waterloo, Canada; and, London, England.\n\nThe company was founded in 1995 by Randy Parker and was later sold to Endurance International in 2015. As of 2021 it had been acquired by ClearLake Investments"
+
+    },
+    {
+        "id": 14,
+        "cat":"Web",
+        "name": "Wix",
+        "icon": "Wix.png",
+        "exp": 8,
+        "pref": 5,
+        "desc" :"Wix.com Ltd., or simply Wix, is an Israeli software company, publicly listed in the US, that provides cloud-based web development services. It offers tools for creating HTML5 websites for desktop and mobile platforms using online drag-and-drop editing. Along with its headquarters and other offices in Israel, Wix also has offices in Brazil, Canada, Germany, India, Ireland, Japan, Lithuania, Poland, the Netherlands, the United States, Ukraine, and Singapore.\n\nUsers can add applications for social media, e-commerce, online marketing, contact forms, email marketing, and community forums to their websites. The Wix website builder is built on a freemium business model, earning its revenues through premium upgrades. According to W3Techs, a technology survey website, Wix was used by 2.5% of websites as of September 2023;[8] at the end of May 2025, it was 3.8%"
+
+    },
+    {
+        "id": 15,
+        "cat":"Web",
+        "name": "Google Analytics",
+        "icon": "GoogleAnalytics.png",
+        "exp": 6,
+        "pref": 5,
+        "desc" :"Google Analytics is a web analytics service offered by Google that tracks and reports website traffic and mobile app traffic and events, currently as a platform inside the Google Marketing Platform brand. Google launched the service in November 2005 after acquiring Urchin.\n\nAs of 2019, Google Analytics is the most widely used web analytics service on the web. Google Analytics provides an SDK that allows gathering usage data from iOS and Android apps, known as Google Analytics for Mobile Apps.\n\nGoogle Analytics has undergone many updates since its inception and is currently on its 4th iteration i.e. GA4.[9] GA4 is the default Google Analytics installation and is the renamed version for the (App + Web) Property that Google released in 2019 in a Beta form. GA4 has also replaced Universal Analytics (UA). One notable feature of GA4 is a natural integration with Google's BigQuery—a feature previously only available with the enterprise GA 360. This move indicates efforts by Google to integrate GA and its free users into their wider cloud offering.\n\nAs of July 1, 2023, Universal Analytics ceased collecting new data, with Google Analytics 4 succeeding it as the primary analytics platform. Google had previously announced this change in March 2022. While users had the ability to use Universal Analytics up to the July 2023 deadline, no new data has been added to UA since its sunset. On July 1, 2024, all users, including GA 360, will lose access to all Universal Analytics properties.\n\nGoogle Analytics has also faced scrutiny from data protection authorities in several jurisdictions. In the early 2020s, regulators in countries including Austria, France, and Italy found that certain uses of Google Analytics could violate the General Data Protection Regulation (GDPR) due to data transfers to the United States."
+
+    }
+    
+]

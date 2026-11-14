@@ -1,0 +1,38 @@
+@use "../../variables";
+
+.Return {
+    //border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    // position: fixed;
+    // top: 7cqw;
+    // left: 7dvw;
+    //border: 2px solid rgba(117, 117, 117, 0.664);
+    //width: 3dvw;
+    //height: 100%;
+    border-radius: 10%;
+    opacity: 60%;
+    //background-color: #00000067;
+    white-space: nowrap;
+    //z-index: 1000;
+
+    .ReturnBox {
+        //border: 2px solid blue;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        //height: 100%;
+        //padding: 2cqh;
+        //height: 8cqh;
+        //gap: 8%;
+        flex: 1 1 0;
+        //z-index: 1000;
+        color: variables.$primary-teal;
+        img {
+            height: 2cqw;
+            margin-right: 1cqw;
+        }
+    }
+}

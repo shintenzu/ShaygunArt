@@ -14,6 +14,7 @@ import JitterDiv from "../JitterDiv/JitterDiv";
 import CRTBox from "../CRTBox/CRTBox";
 import left from "../../icons/common/left.png";
 import right from "../../icons/common/right.png";
+import CarouselOverlay from "../CarouselOverlay/CarouselOverlay";
 
 export interface CardCarouselProps {
     /** Anything you like: each item is rendered inside its own card */
@@ -88,6 +89,8 @@ export default function CardCarousel({
     // 2.5 means halfway between cards 2 and 3 (mid-drag or mid-slide).
     const [position, setPosition] = useState(startIndex);
     const [dragging, setDragging] = useState(false);
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [flatten, setFlatten] = useState(false);
 
     const posRef = useRef(startIndex); // always the latest position
     const targetRef = useRef(startIndex); // where the slide animation is heading
@@ -232,80 +235,93 @@ export default function CardCarousel({
     if (n === 0) return null;
 
     return (
-        <div
-            className={`${styles.carousel} ${dragging ? styles.dragging : ""} ${className}`.trim()}
-            role="region"
-            aria-roledescription="carousel"
-            tabIndex={0}
-            onKeyDown={onKeyDown}
-            onClickCapture={onClickCapture}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={endDrag}
-            onPointerCancel={endDrag}
-            onDragStart={(e) => e.preventDefault()}
-        >
-            {items.map((item, i) => {
-                const offset = wrapOffset(i - position, n);
-                const distance = Math.abs(offset);
-                // 0 at the center, 1 at the outermost visible card
-                const t = half > 0 ? Math.min(distance, half) / half : 0;
-                // fully visible inside the range, fading out just past it
-                const opacity = clamp(half + 1 - distance, 0, 1);
+        <>
+            <div
+                className={`${styles.carousel} ${dragging ? styles.dragging : ""} ${className}`.trim()}
+                role="region"
+                aria-roledescription="carousel"
+                tabIndex={0}
+                onKeyDown={onKeyDown}
+                onClickCapture={onClickCapture}
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={endDrag}
+                onPointerCancel={endDrag}
+                onDragStart={(e) => e.preventDefault()}
+            >
+                {items.map((item, i) => {
+                    const offset = wrapOffset(i - position, n);
+                    const distance = Math.abs(offset);
+                    // 0 at the center, 1 at the outermost visible card
+                    const t = half > 0 ? Math.min(distance, half) / half : 0;
+                    // fully visible inside the range, fading out just past it
+                    const opacity = clamp(half + 1 - distance, 0, 1);
 
-                const cardStyle = {
-                    "--x": offset * step,
-                    "--scale": 1 - t * (1 - edgeScale),
-                    opacity,
-                    zIndex: 100 - Math.round(distance),
-                } as CSSProperties;
+                    const cardStyle = {
+                        "--x": offset * step,
+                        "--scale": 1 - t * (1 - edgeScale),
+                        opacity,
+                        zIndex: 100 - Math.round(distance),
+                    } as CSSProperties;
 
-                return (
-                    // The JitterDiv IS the card: it keeps the positioning, ring and
-                    // drag logic. The CRT effect goes INSIDE it, around the content.
-                    <JitterDiv
-                        key={i}
-                        data-card
-                        data-hidden={opacity === 0 || undefined}
-                        className={`${styles.card} ${distance < 0.5 ? styles.active : ""}`}
-                        style={cardStyle}
-                        aria-hidden={opacity === 0}
-                        data-offset={offset}
-                    >
-                        <CRTBox {...CRT_PROPS} className={styles.crt} innerClassName={styles.crtInner}>
-                            {item}
-                            <div className={styles.caption}>
-                                <div className={styles.captionLeft}>
-                                    <div>Title:</div>
-                                    <div>Year:</div>
-                                    <div>Medium:</div>
-                                </div>
-                                <div className={styles.captionRight}>
-                                    <div>This is some awesome</div>
-                                    <div>2015</div>
-                                    <div>Digital Painting</div>
-                                </div>
-                            </div>
-                            <div className={styles.counter}>
-                                {i}/{items.length}
-                            </div>
-                        </CRTBox>
+                    const cardStyleFlat = {
+                        "--x": offset * (step * 1.5),
+                        "--scale": 1,
+                        opacity,
+                        zIndex: 100 - Math.round(distance),
+                    } as CSSProperties;
+
+                    return (
+                        // The JitterDiv IS the card: it keeps the positioning, ring and
+                        // drag logic. The CRT effect goes INSIDE it, around the content.
+                        <>
+                            {/* {!showOverlay ? <CarouselOverlay item={item}></CarouselOverlay> : ""} */}
+                            <JitterDiv
+                                key={i}
+                                data-card
+                                data-hidden={opacity === 0 || undefined}
+                                className={`${styles.card} ${distance < 0.5 ? styles.active : ""}`}
+                                style={!flatten ? cardStyle : cardStyleFlat}
+                                aria-hidden={opacity === 0}
+                                data-offset={offset}
+                                onClick={() => setShowOverlay(!showOverlay)}
+                            >
+                                <CRTBox {...CRT_PROPS} className={styles.crt} innerClassName={styles.crtInner}>
+                                    {item}
+                                    <div className={styles.caption}>
+                                        <div className={styles.captionLeft}>
+                                            <div>Title:</div>
+                                            <div>Year:</div>
+                                            <div>Medium:</div>
+                                        </div>
+                                        <div className={styles.captionRight}>
+                                            <div>This is some awesome</div>
+                                            <div>2015</div>
+                                            <div>Digital Painting</div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.counter}>
+                                        {i}/{items.length}
+                                    </div>
+                                </CRTBox>
+                            </JitterDiv>
+                        </>
+                    );
+                })}
+
+                <div className={`${styles.actions}`}>
+                    <JitterDiv className={`${styles.buttonContainer}`}>
+                        <button type="button" onClick={() => go(-1)} className={`btn-grow`}>
+                            <img src={left} />
+                        </button>
                     </JitterDiv>
-                );
-            })}
-
-            <div className={`${styles.actions}`}>
-                <JitterDiv className={`${styles.buttonContainer}`}>
-                    <button type="button" onClick={() => go(-1)} className={`btn-grow`}>
-                        <img src={left} />
-                    </button>
-                </JitterDiv>
-                <JitterDiv className={`${styles.buttonContainer}`}>
-                    <button type="button" onClick={() => go(1)} className={`btn-grow`}>
-                        <img src={right} />
-                    </button>
-                </JitterDiv>
+                    <JitterDiv className={`${styles.buttonContainer}`}>
+                        <button type="button" onClick={() => go(1)} className={`btn-grow`}>
+                            <img src={right} />
+                        </button>
+                    </JitterDiv>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
