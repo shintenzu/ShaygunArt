@@ -63,12 +63,3 @@
         }
     }
 }
-
-.shrunk {
-    transform: scaleY(0.015);
-    opacity: 0;
-}
-.expand {
-    transform: scaleY(1);
-    opacity: 1;
-}

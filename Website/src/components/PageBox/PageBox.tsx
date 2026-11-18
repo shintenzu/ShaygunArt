@@ -10,7 +10,7 @@ interface PageBoxProps extends ComponentPropsWithRef<"div"> {
 
 function PageBox({ children, boxHeight = "auto", className = "", style, ...rest }: PageBoxProps) {
     const { power } = usePower();
-    const powerClass = power === "off" ? styles.shrunk : power === "on" ? styles.expand : "";
+    const powerClass = power === "off" ? "shrunk" : power === "on" ? "expand" : "";
     return (
         <div className={`${styles.PageBox} ${powerClass}`}>
             <CRTEffect

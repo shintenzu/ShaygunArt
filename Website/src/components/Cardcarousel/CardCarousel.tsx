@@ -15,10 +15,13 @@ import CRTBox from "../CRTBox/CRTBox";
 import left from "../../icons/common/left.png";
 import right from "../../icons/common/right.png";
 //import CarouselOverlay from "../CarouselOverlay/CarouselOverlay";
+import { useDeck } from "../../hooks/DeckContext";
+//import { distance } from "motion/react";
 
 export interface CardCarouselProps {
     /** Anything you like: each item is rendered inside its own card */
-    items: ReactNode[];
+    //items: ReactNode[];
+    gallery: string[];
     /** How many cards are visible at once (odd numbers look best) */
     visible?: number;
     /** How far (in % of a card's width) the outermost visible cards sit from the center */
@@ -28,6 +31,8 @@ export interface CardCarouselProps {
     /** Which item starts in the center */
     startIndex?: number;
     className?: string;
+    flat?: boolean;
+    cardSize?: string;
 }
 
 interface DragState {
@@ -74,13 +79,50 @@ const mod = (v: number, n: number) => ((v % n) + n) % n;
 const wrapOffset = (raw: number, n: number) => mod(raw + n / 2, n) - n / 2;
 
 export default function CardCarousel({
-    items,
+    gallery,
     visible = 5,
     spread = 150,
     edgeScale = 0.6,
     startIndex = 0,
     className = "",
+    flat = false,
+    cardSize = "18dvw",
 }: CardCarouselProps) {
+    // const BASE_IMAGES = Object.entries(galleryModules)
+    //     .sort(([a], [b]) => a.localeCompare(b))
+    //     .map(([, url]) => url); // already an array of URL strings
+
+    // // Repeat the images until there are enough cards to fill the loop (~14)
+    // const MIN_CARDS = 14;
+    // const gallery = Array.from(
+    //     { length: Math.max(MIN_CARDS, BASE_IMAGES.length) },
+    //     (_, i) => BASE_IMAGES[i % BASE_IMAGES.length],
+    // );
+
+    const items = gallery.map((src, index) => (
+        <div
+            key={index}
+            style={{
+                backgroundImage: `url("${src}")`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+            }}
+        />
+    ));
+
+    const { setItems, setIndex, setVisibility, visibility } = useDeck();
+
+    const openDeck = (i: number) => {
+        if (!flat) {
+            setItems(gallery);
+            setVisibility(true);
+        }
+
+        setIndex(i);
+        console.log("Current Card:" + i + "Visible?" + visibility);
+    };
+
     const n = items.length;
     const half = Math.floor(visible / 2);
     const step = half > 0 ? spread / half : 0; // % of card width between neighbours
@@ -90,10 +132,7 @@ export default function CardCarousel({
     const [position, setPosition] = useState(startIndex);
     const [dragging, setDragging] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
-    const [
-        flatten,
-        //setFlatten
-    ] = useState(false);
+    const [flatten, setFlatten] = useState(flat);
 
     const posRef = useRef(startIndex); // always the latest position
     const targetRef = useRef(startIndex); // where the slide animation is heading
@@ -232,7 +271,12 @@ export default function CardCarousel({
         const card = target.closest<HTMLElement>("[data-card]");
         if (!card) return;
         const rel = Math.round(Number(card.dataset.offset));
-        if (rel !== 0) go(rel);
+        openDeck(Number(card.dataset.index));
+        if (rel !== 0) {
+            go(rel);
+        } else {
+            openDeck(Number(card.dataset.index));
+        }
     };
 
     if (n === 0) return null;
@@ -251,6 +295,7 @@ export default function CardCarousel({
                 onPointerUp={endDrag}
                 onPointerCancel={endDrag}
                 onDragStart={(e) => e.preventDefault()}
+                style={{ "--card-size": cardSize } as React.CSSProperties}
             >
                 {items.map((item, i) => {
                     const offset = wrapOffset(i - position, n);
@@ -277,38 +322,36 @@ export default function CardCarousel({
                     return (
                         // The JitterDiv IS the card: it keeps the positioning, ring and
                         // drag logic. The CRT effect goes INSIDE it, around the content.
-                        <>
-                            {/* {!showOverlay ? <CarouselOverlay item={item}></CarouselOverlay> : ""} */}
-                            <JitterDiv
-                                key={i}
-                                data-card
-                                data-hidden={opacity === 0 || undefined}
-                                className={`${styles.card} ${distance < 0.5 ? styles.active : ""}`}
-                                style={!flatten ? cardStyle : cardStyleFlat}
-                                aria-hidden={opacity === 0}
-                                data-offset={offset}
-                                onClick={() => setShowOverlay(!showOverlay)}
-                            >
-                                <CRTBox {...CRT_PROPS} className={styles.crt} innerClassName={styles.crtInner}>
-                                    {item}
-                                    <div className={styles.caption}>
-                                        <div className={styles.captionLeft}>
-                                            <div>Title:</div>
-                                            <div>Year:</div>
-                                            <div>Medium:</div>
-                                        </div>
-                                        <div className={styles.captionRight}>
-                                            <div>This is some awesome</div>
-                                            <div>2015</div>
-                                            <div>Digital Painting</div>
-                                        </div>
+
+                        <JitterDiv
+                            key={i}
+                            data-card
+                            data-hidden={opacity === 0 || undefined}
+                            className={`${styles.card} ${distance < 0.5 ? styles.active : ""}`}
+                            style={!flatten ? cardStyle : cardStyleFlat}
+                            aria-hidden={opacity === 0}
+                            data-offset={offset}
+                            data-index={i}
+                        >
+                            <CRTBox {...CRT_PROPS} className={styles.crt} innerClassName={styles.crtInner}>
+                                {item}
+                                <div className={styles.caption}>
+                                    <div className={styles.captionLeft}>
+                                        <div>Title:</div>
+                                        <div>Year:</div>
+                                        <div>Medium:</div>
                                     </div>
-                                    <div className={styles.counter}>
-                                        {i}/{items.length}
+                                    <div className={styles.captionRight}>
+                                        <div>This is some awesome</div>
+                                        <div>2015</div>
+                                        <div>Digital Painting</div>
                                     </div>
-                                </CRTBox>
-                            </JitterDiv>
-                        </>
+                                </div>
+                                <div className={styles.counter}>
+                                    {i}/{items.length}
+                                </div>
+                            </CRTBox>
+                        </JitterDiv>
                     );
                 })}
 

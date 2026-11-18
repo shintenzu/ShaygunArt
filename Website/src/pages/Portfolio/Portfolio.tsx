@@ -10,6 +10,7 @@ import { usePower } from "../../hooks/PowerContext";
 import { useNavigate } from "react-router";
 //import axios from "axios";
 import Legend from "./Legend/Legend";
+import { DeckProvider } from "../../hooks/DeckContext";
 
 interface PortfolioProps {}
 
@@ -35,7 +36,7 @@ export default function Portfolio({}: PortfolioProps) {
     // );
 
     // Module level: runs once, so the array identity never changes between renders
-    const galleryModules = import.meta.glob<string>("../../Gallery/**/*.{png,jpg,jpeg,svg}", {
+    const galleryModules = import.meta.glob<string>("../../gallery/**/*.{png,jpg,jpeg,svg}", {
         eager: true,
         query: "?url",
         import: "default",
@@ -46,22 +47,22 @@ export default function Portfolio({}: PortfolioProps) {
         .map(([, url]) => url); // already an array of URL strings
 
     // Repeat the images until there are enough cards to fill the loop (~14)
-    const MIN_CARDS = 14;
+    const MIN_CARDS = 6;
     const gallery = Array.from(
         { length: Math.max(MIN_CARDS, BASE_IMAGES.length) },
         (_, i) => BASE_IMAGES[i % BASE_IMAGES.length],
     );
 
-    const items = gallery.map((src) => (
-        <div
-            style={{
-                backgroundImage: `url("${src}")`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-            }}
-        />
-    ));
+    // const items = gallery.map((src) => (
+    //     <div
+    //         style={{
+    //             backgroundImage: `url("${src}")`,
+    //             backgroundSize: "contain",
+    //             backgroundRepeat: "no-repeat",
+    //             backgroundPosition: "center",
+    //         }}
+    //     />
+    // ));
 
     const [shouldRender, setShouldRender] = useState(false);
 
@@ -170,7 +171,9 @@ export default function Portfolio({}: PortfolioProps) {
                                             spread={180}
                                             edgeScale={0.6}
                                         /> */}
-                                    <CardCarousel items={items} visible={5} spread={140} edgeScale={0.6} />
+                                    <DeckProvider>
+                                        <CardCarousel gallery={gallery} visible={5} spread={140} edgeScale={0.6} />
+                                    </DeckProvider>
                                 </div>
                             </div>
                         </div>

@@ -48,6 +48,7 @@ function Home({}: HomeProps) {
         }),
     );
     const [shouldRender, setShouldRender] = useState(false);
+    const [animate, setAnimate] = useState(false);
     const pageHeight = "80dvh";
     const navigate = useNavigate();
 
@@ -72,13 +73,21 @@ function Home({}: HomeProps) {
 
                         <div className={`${styles.iconHeader}`}>
                             <div className={`${styles.skills} `}>
-                                <IconHeader title="Web Developer" icon={web} hcolor="#00defe" delayAdd={1} pad={0} />
+                                <IconHeader
+                                    title="Web Developer"
+                                    icon={web}
+                                    hcolor="#00defe"
+                                    delayAdd={1}
+                                    pad={0}
+                                    animate={animate}
+                                />
                                 <IconHeader
                                     title="Graphic Designer"
                                     icon={design}
                                     hcolor="#f2000d"
                                     delayAdd={1.4}
                                     pad={10}
+                                    animate={animate}
                                 />
                                 <IconHeader
                                     title="Digital Illustrator"
@@ -86,6 +95,7 @@ function Home({}: HomeProps) {
                                     hcolor="#00defe"
                                     delayAdd={1.8}
                                     pad={20}
+                                    animate={animate}
                                 />
                             </div>
                         </div>
@@ -98,21 +108,30 @@ function Home({}: HomeProps) {
                                 text2="I've got you covered!"
                                 text2Color="#ffba41"
                                 initialDelay={2000}
+                                animate={animate}
                             />
                         </JitterDiv>
 
                         <motion.div
                             className={`${styles.buttons} `}
-                            initial={{
-                                opacity: 0,
-                                //x: -500,
-                                scaleY: 0,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                //x: 0
-                                scaleY: 1,
-                            }}
+                            initial={
+                                animate
+                                    ? {
+                                          opacity: 0,
+                                          //x: -500,
+                                          scaleY: 0,
+                                      }
+                                    : false
+                            }
+                            animate={
+                                animate
+                                    ? {
+                                          opacity: 1,
+                                          //x: 0
+                                          scaleY: 1,
+                                      }
+                                    : false
+                            }
                             transition={{
                                 delay: 3.5,
                                 duration: 0.5,
@@ -137,19 +156,22 @@ function Home({}: HomeProps) {
                         </motion.div>
                         <motion.div className={`${styles.contacts} `}>
                             {contacts.map((cont: Socials, index) => (
-                                <JitterDiv scale={0.5}>
+                                <JitterDiv key={index} scale={0.5}>
                                     <motion.img
-                                        key={index}
                                         //src={cont.url}
                                         src={images[`${cont.url}`]}
                                         alt={`Gallery item ${index}`}
                                         className={`${styles.icons} btn-grow`}
                                         //ref={clickGlitch.ref}
-                                        initial={{
-                                            opacity: 0,
-                                            x: -500,
-                                        }}
-                                        animate={{ opacity: 1, x: 0 }}
+                                        initial={
+                                            animate
+                                                ? {
+                                                      opacity: 0,
+                                                      x: -500,
+                                                  }
+                                                : false
+                                        }
+                                        animate={animate ? { opacity: 1, x: 0 } : false}
                                         transition={{
                                             delay: 3.8 + index * 0.1,
                                             duration: 0.5,
@@ -163,16 +185,24 @@ function Home({}: HomeProps) {
                     </div>
                     <motion.div
                         className={`${styles.splash} `}
-                        initial={{
-                            opacity: 0,
-                            //x: +500,
-                            scaleY: 0,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            //x: 0,
-                            scaleY: 1,
-                        }}
+                        initial={
+                            animate
+                                ? {
+                                      opacity: 0,
+                                      //x: +500,
+                                      scaleY: 0,
+                                  }
+                                : false
+                        }
+                        animate={
+                            animate
+                                ? {
+                                      opacity: 1,
+                                      //x: 0,
+                                      scaleY: 1,
+                                  }
+                                : false
+                        }
                         transition={{
                             delay: 0,
                             duration: 0.75,

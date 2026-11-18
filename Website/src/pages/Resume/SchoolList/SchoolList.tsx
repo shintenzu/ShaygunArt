@@ -19,7 +19,7 @@ export default function SchoolList({ schools }: SchoolListProps) {
     );
 
     return schools.map((_, index) => (
-        <div className={`${styles.degreeBox} `}>
+        <div key={index} className={`${styles.degreeBox} `}>
             <JitterDiv className={`${styles.degreeIcon}`}>
                 <img src={images[schools[index].icon]} className={`grow`} />
             </JitterDiv>

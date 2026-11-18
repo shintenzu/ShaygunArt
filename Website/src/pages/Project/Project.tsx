@@ -46,7 +46,7 @@ function Project({ name = "Projects" }: ProjectProps) {
     // );
 
     // Module level: runs once, so the array identity never changes between renders
-    const galleryModules = import.meta.glob<string>("../../Gallery/**/*.{png,jpg,jpeg,svg}", {
+    const galleryModules = import.meta.glob<string>("../../gallery/**/*.{png,jpg,jpeg,svg}", {
         eager: true,
         query: "?url",
         import: "default",
@@ -63,16 +63,16 @@ function Project({ name = "Projects" }: ProjectProps) {
         (_, i) => BASE_IMAGES[i % BASE_IMAGES.length],
     );
 
-    const items = gallery.map((src) => (
-        <div
-            style={{
-                backgroundImage: `url("${src}")`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-            }}
-        />
-    ));
+    // const items = gallery.map((src) => (
+    //     <div
+    //         style={{
+    //             backgroundImage: `url("${src}")`,
+    //             backgroundSize: "contain",
+    //             backgroundRepeat: "no-repeat",
+    //             backgroundPosition: "center",
+    //         }}
+    //     />
+    // ));
 
     // const bPlusExpand = <img src={images[`BluePlus.png`]} className={`${styles.expand}  btn-grow`} />;
 
@@ -264,17 +264,13 @@ function Project({ name = "Projects" }: ProjectProps) {
                                                 </div>
                                                 <div ref={ref} className={`scrollFade ${styles.typeList}`}>
                                                     <div className={`${styles.primaryList}`}>
-                                                        {Array.from({
-                                                            length: 15,
-                                                        }).map(() => (
-                                                            <p>Open Sans Bold</p>
+                                                        {Array.from({ length: 15 }).map((_, i) => (
+                                                            <p key={i}>Open Sans Bold</p>
                                                         ))}
                                                     </div>
                                                     <div className={`${styles.primaryList}`}>
-                                                        {Array.from({
-                                                            length: 15,
-                                                        }).map(() => (
-                                                            <p>Open Sans Bold</p>
+                                                        {Array.from({ length: 15 }).map((_, i) => (
+                                                            <p key={i}>Open Sans Bold</p>
                                                         ))}
                                                     </div>
                                                 </div>
@@ -326,7 +322,7 @@ function Project({ name = "Projects" }: ProjectProps) {
                                             spread={180}
                                             edgeScale={0.6}
                                         /> */}
-                                    <CardCarousel items={items} visible={5} spread={140} edgeScale={0.6} />
+                                    <CardCarousel gallery={gallery} visible={5} spread={140} edgeScale={0.6} />
                                 </div>
                             </div>
                         </div>

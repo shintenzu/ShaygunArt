@@ -16,8 +16,7 @@ textarea {
 textarea {
     padding: 0.5rem;
 }
-
-.ContactForm {
+.formContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -29,9 +28,24 @@ textarea {
     background-color: variables.$primary-black;
     border-radius: 20px;
     border: 3px solid variables.$form-border;
-    opacity: 90%;
     font-family: variables.$font-primary-alt1;
     font-weight: 200;
+    opacity: 90%;
+}
+
+.ContactForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1 1 0;
+    display: flex;
+    width: 100%;
+    transform-origin: calc(50vw) calc(50vh);
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s ease;
+    overflow: hidden;
 
     filter: drop-shadow(8px 8px 3px variables.$primary-black);
 
@@ -162,5 +176,45 @@ textarea {
                 padding-bottom: 15px;
             }
         }
+    }
+}
+
+.sucessContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.sucessBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 2%;
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s ease;
+    overflow: hidden;
+    color: variables.$primary-teal;
+    font-size: clamp(0.5rem, 1dvw, 2rem);
+    .check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        justify-self: center;
+        width: 50%;
+    }
+    .sendAgain {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        justify-self: center;
+        text-align: center;
     }
 }

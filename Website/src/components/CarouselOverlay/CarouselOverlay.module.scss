@@ -1,33 +1,98 @@
-.CarouselOverlay {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    top: 0;
-    right: 0;
-    padding-left: 10dvw;
-    padding-right: 10dvw;
-    padding-top: 5dvw;
-    padding-bottom: 5dvw;
+@use "../../variables";
 
+$background: rgba(0, 0, 0, 0.822);
+
+.container {
+    //border: 2px solid red;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
     width: 100%;
     height: 100%;
-    gap: 5%;
-    z-index: 1;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    padding-left: 3dvw;
+    padding-right: 3dvw;
+    padding-top: 2dvh;
+    padding-bottom: 2dvh;
+}
+
+.CarouselOverlay {
+    border: 2px solid rgba(255, 255, 255, 0.274);
+    border-radius: 0.25dvw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    height: 100%;
+    gap: 1%;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    //z-index: 10000;
+    background-color: $background;
+    padding-left: 1dvw;
+    padding-right: 1dvw;
+    padding-top: 1dvh;
+    padding-bottom: 1dvh;
+}
+
+.close {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    height: 2dvw;
+    width: 2dvw;
+    z-index: 1001;
+    //background-color: rgb(102, 255, 0);
 }
 
 .display {
+    position: relative;
+    //padding-top: 2%;
+    //border: 2px solid white;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100dvw;
-    height: 100dvh;
-    //flex: 3 1 0; // DIsplay should be a 3 to one ratio compared to carousel
-    background-color: rgba(180, 11, 11, 0.897);
+    justify-content: flex-start;
+    //width: 95dvw;
+    //height: 95dvh;
+    flex: 1 1 0; // DIsplay should be a 3 to one ratio compared to carousel
+    width: 100%;
+    //background-color: $background;
+    //min-height: 0;
+    overflow: hidden;
+    .imageBox {
+        position: relative;
+        display: flex;
+        height: 100%;
+        border: 2px solid rgba(255, 255, 255, 0.404);
+        border-radius: 0.25dvw;
+        overflow: hidden;
+        img {
+        }
+    }
 }
 .gallery {
+    //align-self: flex-end;
+    //justify-self: flex-start;
+    //border: 2px solid white;
+    width: 100%;
+    position: relative;
+    //bottom: 0%;
     display: flex;
+    flex-direction: column;
     //flex: 1 1 0;
-    width: 95%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    //scale: 0.5;
+    //transform-origin: bottom;
+    //flex: 1 1 0;
+    //width: 95%;
+    //height: 1dvw;
+
+    //background-color: $background;
+
+    //transform: scale(0.5);
 }

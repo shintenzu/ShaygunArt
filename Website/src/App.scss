@@ -11,24 +11,24 @@
 
 .loading-box-fade {
   position: fixed;
-  animation: fadeOut 4s ease-out forwards;
+  animation: fadeOut 5s ease-out forwards;
 }
 
 .loading-box-show {
   position: fixed;
-  animation: fadeIn 4s ease-out forwards;
+  animation: fadeIn 5s ease-out forwards;
 }
 
 .loading-box-fade-fast {
   z-index: -1;
   position: fixed;
-  animation: fadeOut 1.5s ease-out forwards;
+  animation: fadeOut 3s ease-out forwards;
 }
 
 .loading-box-show-fast {
   z-index: 10;
   position: fixed;
-  animation: fadeIn 2s ease-out forwards;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 @keyframes fadeOut {

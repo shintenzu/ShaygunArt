@@ -12,6 +12,7 @@ import ToolBox from "../../components/ToolBox/ToolBox";
 import SectionTab from "./SectionTab/SectionTab";
 import JobList from "./JobList/JobList";
 import SchoolList from "./SchoolList/SchoolList";
+import resumeUrl from "/download/Segun-O-SWE-Resume-2026.docx?url";
 import type {
     Tool,
     School,
@@ -108,7 +109,7 @@ export default function Resume({}: ResumeProps) {
     };
 
     const jobList = () => {
-        return jobs.map((_, index) => <JobList key={jobs[index].id} job={jobs[index]} />);
+        return jobs.map((_, index) => <JobList key={index} job={jobs[index]} />);
     };
 
     useEffect(() => {
@@ -130,10 +131,10 @@ export default function Resume({}: ResumeProps) {
                         <div className={`${styles.top} `}>
                             {/* Page title */}
                             <PageTitle size1={75} title="Resume" className={`${styles.title} `} />
-                            <a href="../download/Segun O SWE Resume 2026.docx" download="Segun O Resume.docx">
+                            <a href={resumeUrl} download="Segun-O-Resume.docx">
                                 <JitterDiv className={`${styles.downloadBox} btn-grow`}>
                                     <div className={`${styles.download} crt`}>
-                                        <span>Download resume (PDF)</span>
+                                        <span>Download resume (DOCX)</span>
                                     </div>
                                     <img src={images[`Download2.png`]} className={`${styles.icon} glitch-image`} />
                                 </JitterDiv>

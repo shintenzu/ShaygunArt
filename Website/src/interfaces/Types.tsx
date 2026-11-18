@@ -1,3 +1,5 @@
+import { type ReactNode } from "react";
+
 export interface ToolBoxProps {
     name: string;
     exp?: number;
@@ -60,3 +62,9 @@ export interface Project {
 }
 
 export type PowerState = "idle" | "on" | "off";
+
+export interface Deck {
+    items: ReactNode[];
+    startIndex?: number;
+    visible?: boolean;
+}

@@ -7,6 +7,7 @@ import plus from "../../images/plus.png";
 import starF from "../../icons/Resume/StarFull.png";
 import starH from "../../icons/Resume/StarHalf.png";
 import type { Tool } from "../../interfaces/Types";
+import { Fragment } from "react/jsx-runtime";
 
 interface ToolBoxProps {
     tool: Tool;
@@ -71,8 +72,8 @@ function ToolBox({ tool }: ToolBoxProps) {
                                 </div>
                             </div>
                             <div className={`${styles.starContainer} `}>
-                                {Array.from({ length: fullStarsP }).map(() => (
-                                    <>{fStars}</>
+                                {Array.from({ length: fullStarsP }).map((_, index) => (
+                                    <Fragment key={index}>{fStars}</Fragment>
                                 ))}
 
                                 {halfStarsP != 0 && <>{hStars}</>}

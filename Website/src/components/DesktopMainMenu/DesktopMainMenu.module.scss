@@ -37,9 +37,11 @@
         align-self: center;
         //border: 2px solid #3a373794;
         height: 5.5dvw;
-        margin-right: 0.4%;
+        margin-right: 0.5%;
 
         .image {
+            width: 7.5dvw;
+            aspect-ratio: 1/1;
             height: 100%;
             object-fit: cover;
         }

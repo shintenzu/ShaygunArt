@@ -55,6 +55,7 @@ function Contact({}: ContactProps) {
         // Clean up the timer if the component unmounts before the delay finishes
         return () => clearTimeout(timer);
     }, []);
+    const [animate, setAnimate] = useState(false);
     const delayScale = 0.2;
     const delay = 1.5;
 
@@ -62,11 +63,13 @@ function Contact({}: ContactProps) {
         return contacts.map((cont: Socials, index) => {
             return (
                 <IconHeader
+                    key={index}
                     title={cont.name + " :"}
                     icon={images[cont.url]}
                     hcolor={index % 2 == 0 ? "var(--color-primary-red)" : "var(--color-primary-teal)"}
                     delayAdd={delay + index * delayScale}
                     glitch={false}
+                    animate={animate}
                 />
             );
         });
@@ -76,9 +79,11 @@ function Contact({}: ContactProps) {
         return contacts.map((cont: Socials, index) => {
             return (
                 <IconHeader
+                    key={index}
                     title={cont.info}
                     hcolor="var(--color-primary-white)"
                     delayAdd={delay + index * delayScale}
+                    animate={animate}
                 />
             );
         });
@@ -109,6 +114,7 @@ function Contact({}: ContactProps) {
                                 variableSpeedMax={35}
                                 cursorBlinkDuration={0.5}
                                 reverseMode={false}
+                                animate={animate}
                             />
                         </JitterDiv>
 
@@ -119,16 +125,24 @@ function Contact({}: ContactProps) {
 
                         <motion.div
                             className={`${styles.buttons} `}
-                            initial={{
-                                opacity: 0,
-                                //x: -500,
-                                scaleY: 0,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                //x: 0
-                                scaleY: 1,
-                            }}
+                            initial={
+                                animate
+                                    ? {
+                                          opacity: 0,
+                                          //x: -500,
+                                          scaleY: 0,
+                                      }
+                                    : false
+                            }
+                            animate={
+                                animate
+                                    ? {
+                                          opacity: 1,
+                                          //x: 0
+                                          scaleY: 1,
+                                      }
+                                    : false
+                            }
                             transition={{
                                 delay: 2.8,
                                 duration: 0.7,
@@ -154,16 +168,24 @@ function Contact({}: ContactProps) {
                     </div>
                     <motion.div
                         className={`${styles.formBox} `}
-                        initial={{
-                            opacity: 0,
-                            x: +500,
-                            //scaleY: 0,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                            //scaleY: 1,
-                        }}
+                        initial={
+                            animate
+                                ? {
+                                      opacity: 0,
+                                      x: +500,
+                                      //scaleY: 0,
+                                  }
+                                : false
+                        }
+                        animate={
+                            animate
+                                ? {
+                                      opacity: 1,
+                                      x: 0,
+                                      //scaleY: 1,
+                                  }
+                                : false
+                        }
                         transition={{
                             delay: 3.2,
                             duration: 0.7,

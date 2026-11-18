@@ -31,6 +31,7 @@ interface TextTypeProps {
     onSentenceComplete?: (sentence: string, index: number) => void;
     startOnVisible?: boolean;
     reverseMode?: boolean;
+    animate?: boolean;
 }
 
 /**
@@ -116,10 +117,12 @@ const TextType = ({
     onSentenceComplete,
     startOnVisible = false,
     reverseMode = false,
+    animate = true,
     ...props
 }: TextTypeProps & React.HTMLAttributes<HTMLElement>) => {
-    const [displayedText, setDisplayedText] = useState("");
-    const [currentCharIndex, setCurrentCharIndex] = useState(0);
+    const firstText = Array.isArray(text) ? text[0] : text;
+    const [displayedText, setDisplayedText] = useState(!animate ? firstText : "");
+    const [currentCharIndex, setCurrentCharIndex] = useState(!animate ? firstText.length : 0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [isVisible, setIsVisible] = useState(!startOnVisible);

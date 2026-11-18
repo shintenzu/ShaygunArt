@@ -10,6 +10,7 @@ interface IconHeaderProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
     pad?: number;
     hcolor?: string;
     glitch?: boolean;
+    animate?: boolean;
 }
 
 function IconHeader({
@@ -20,6 +21,7 @@ function IconHeader({
     hcolor = "#FFFFFF",
     glitch = true,
     className = "",
+    animate = true,
 }: IconHeaderProps) {
     const clickGlitch = useGlitch({
         playMode: "hover",
@@ -51,16 +53,38 @@ function IconHeader({
         },
         pulse: false,
     });
+
+    const Header = () => {
+        return (
+            <>
+                {icon !== "" && (
+                    <span
+                        className={`${styles.sub} ${glitch ? "" : "btn-grow"}`}
+                        ref={glitch ? clickGlitch.ref : undefined}
+                    >
+                        <img src={icon} className={`${styles.sIcon} `} />
+                        {title}
+                    </span>
+                )}
+                {icon == "" && <span className={`${styles.sub} `}>{title}</span>}
+            </>
+        );
+    };
+
     return (
         <JitterDiv className={`${styles.container} ${className}`}>
             <motion.div
                 className={`${styles.skill1}`}
                 style={{ color: `${hcolor}`, paddingLeft: `${pad}%` }}
-                initial={{
-                    opacity: 0,
-                    x: -500,
-                }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={
+                    animate
+                        ? {
+                              opacity: 0,
+                              x: -500,
+                          }
+                        : false
+                }
+                animate={animate ? { opacity: 1, x: 0 } : false}
                 transition={{
                     delay: delayAdd,
                     duration: 0.5,
@@ -68,19 +92,7 @@ function IconHeader({
                     type: "spring",
                 }}
             >
-                {icon !== "" && glitch && (
-                    <span className={`${styles.sub} `} ref={clickGlitch.ref}>
-                        <img src={icon} className={`${styles.sIcon} `} />
-                        {title}
-                    </span>
-                )}
-                {icon == "" && <span className={`${styles.sub} `}>{title}</span>}
-                {icon !== "" && !glitch && (
-                    <span className={`${styles.sub} btn-grow`}>
-                        <img src={icon} className={`${styles.sIcon} `} />
-                        {title}
-                    </span>
-                )}
+                {Header()}
             </motion.div>
         </JitterDiv>
     );

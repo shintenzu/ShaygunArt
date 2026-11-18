@@ -1,65 +1,64 @@
+//import { createPortal } from "react-dom";
 import styles from "./CarouselOverlay.module.scss";
+import { useDeck } from "../../hooks/DeckContext";
 
-import {
-    //useCallback,
-    //useEffect,
-    //useRef,
-    //useState,
-    // type CSSProperties,
-    // type KeyboardEvent,
-    // type MouseEvent,    // type PointerEvent,
-    type ReactNode,
-} from "react";
+import { type ComponentPropsWithRef, type ReactNode } from "react";
+import CardCarousel from "../Cardcarousel/CardCarousel";
+import redX from "../../icons/Resume/RedX.png";
+import whiteX from "../../icons/Resume/WhiteX.png";
+import splash from "../../images/HomeSplash.png";
+import blueCheck from "../../icons/Resume/BlueCheck.png";
 //import styles from "./CardCarousel.module.scss";
 
-interface CarouselOverlayProps {
-    item: ReactNode;
-    items?: ReactNode[];
-    /** How many cards are visible at once (odd numbers look best) */
-    visible?: number;
-    /** How far (in % of a card's width) the outermost visible cards sit from the center */
-    spread?: number;
-    /** Scale of the outermost visible cards (1 = same size as the center card) */
-    edgeScale?: number;
-    /** Which item starts in the center */
-    startIndex?: number;
-    className?: string;
-    flatten?: boolean;
-    show?: boolean;
-}
+interface CarouselOverlayProps extends ComponentPropsWithRef<"div"> {}
 
 function CarouselOverlay({
     // All props are received from parent CardCarousel
-    item,
-    //items,
-    // visible,
-    // spread,
-    // edgeScale,
-    // startIndex,
-    // className,
-    show = true,
-    //flatten = true,
+    className = "",
+    ...props
 }: CarouselOverlayProps) {
+    const { visibility, setVisibility, deck, deckIndex } = useDeck();
+    console.log("overlay visibility:", visibility);
+    const src = deck[deckIndex];
+    console.log("cards" + src);
+    if (src == undefined) return null;
+
     return (
         <>
-            {show && (
-                <div className={`${styles.CarouselOverlay}`}>
-                    {/* Image display, shows image in large format above carousel */}
-                    <div className={`${styles.display}`}> {item}</div>
+            {visibility && (
+                <div className={`${styles.container}`}>
+                    <div className={`${styles.CarouselOverlay}`}>
+                        <div
+                            className={`${styles.close} btn-grow`}
+                            onClick={() => {
+                                setVisibility(false);
+                            }}
+                        >
+                            <img src={whiteX} />
+                        </div>
+                        {/* Image display, shows image in large format above carousel */}
+                        <div className={`${styles.display}`}>
+                            <div className={`${styles.imageBox}`}>
+                                {src != undefined || src != null ? <img src={src} /> : ""}
+                            </div>
+                        </div>
 
-                    {/* Card Carousel Display at bottom, tracks with original carousel. Updates once closed */}
-                    {/* <div className={`${styles.gallery}`}>
-                        <CardCarousel
-                            items={items}
-                            spread={spread}
-                            edgeScale={edgeScale}
-                            startIndex={startIndex}
-                            className={className}
-                            flatten={true}
-                        ></CardCarousel>
-                    </div> */}
+                        {/* Card Carousel Display at bottom, tracks with original carousel. Updates once closed */}
+                        <div className={`${styles.gallery}`}>
+                            <CardCarousel
+                                gallery={deck}
+                                startIndex={deckIndex}
+                                className={className}
+                                flat={true}
+                                visible={8}
+                                spread={280}
+                                cardSize={"10dvw"}
+                            ></CardCarousel>
+                        </div>
+                    </div>
                 </div>
             )}
+            ;
         </>
     );
 }

@@ -561,3 +561,72 @@ $solid: linear-gradient(#000, #000);
 .teal {
     color: $primary-teal;
 }
+
+.shrunk {
+    transform: scaleY(0.015);
+    opacity: 0;
+}
+.expand {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+$shake: 1dvw;
+@keyframes shake {
+    0% {
+        transform: translate3d(0, 0, 0);
+        background-color: #f2000cc2;
+    }
+    20% {
+        transform: translate3d(calc($shake * -1), 0, 0);
+    }
+    40% {
+        transform: translate3d($shake, 0, 0);
+    }
+    60% {
+        transform: translate3d(calc($shake * -1), 0, 0);
+    }
+    80% {
+        transform: translate3d($shake, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.error {
+    animation: shake 300ms ease-in-out;
+}
+
+$wiggle: 1.5dvw;
+@keyframes wiggle {
+    0% {
+        transform: translate3d(0, 0, 0);
+        //rotate: 0;
+        background-color: #00dcfec5;
+    }
+    20% {
+        transform: translate3d(0, calc($wiggle * -1), 0);
+        rotate: -2deg;
+    }
+    40% {
+        transform: translate3d(0, calc($wiggle * -1), 0);
+        rotate: 2deg;
+    }
+    60% {
+        transform: translate3d(0, calc($wiggle * -1), 0);
+        rotate: -2deg;
+    }
+    80% {
+        transform: translate3d(0, calc($wiggle * -1), 0);
+        rotate: -2deg;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        rotate: 0deg;
+    }
+}
+
+.yay {
+    animation: wiggle 400ms linear;
+}
