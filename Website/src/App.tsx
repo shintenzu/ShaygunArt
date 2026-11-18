@@ -79,12 +79,16 @@ export const router = createHashRouter([
 
 export default function App() {
     const [loaded, setLoaded] = useState(false); // Hook to check if page is loaded
-    const ASSETS = Object.values(
-        import.meta.glob("./{images,icons}/**/*.{png,jpg,jpeg,gif,webp,svg}", {
-            eager: true,
-            query: "?url",
-            import: "default",
-        }),
+    const ASSETS = Array.from(
+        new Set(
+            Object.values(
+                import.meta.glob("./{images,icons}/**/*.{png,jpg,jpeg,gif,webp,svg}", {
+                    eager: true,
+                    query: "?url",
+                    import: "default",
+                }),
+            ),
+        ),
     ) as string[];
     const [power, setPower] = useState<PowerState>("idle");
 

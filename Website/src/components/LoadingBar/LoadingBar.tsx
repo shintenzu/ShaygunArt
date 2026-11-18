@@ -25,15 +25,16 @@ function useLoadProgress(assets: string[]): number {
     const assetKey = assets.join("|");
 
     useEffect(() => {
-        const urls = assetKey ? assetKey.split("|") : [];
+        const urls = Array.from(new Set(assetKey ? assetKey.split("|") : [])); // deduped
         const total = urls.length + 2; // + window "load" + fonts
-        const done = new Set<string>(); // a Set keeps this safe in StrictMode
+        const done = new Set<string>();
         let cancelled = false;
 
         const mark = (key: string) => {
             if (cancelled) return;
             done.add(key);
-            setProgress(done.size / total);
+            // Math.max so a late arrival can't pull the bar back down after the timeout
+            setProgress((p) => Math.max(p, done.size / total));
         };
 
         const onLoad = () => mark("window");
@@ -48,6 +49,12 @@ function useLoadProgress(assets: string[]): number {
             window.removeEventListener("load", onLoad);
         };
     }, [assetKey]);
+
+    // Safety net: if anything stalls, release the site after 10 seconds
+    useEffect(() => {
+        const t = window.setTimeout(() => setProgress(1), 10000);
+        return () => window.clearTimeout(t);
+    }, []);
 
     return progress;
 }
