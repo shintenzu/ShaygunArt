@@ -10,32 +10,10 @@ import { usePower } from "../../hooks/PowerContext";
 import { useNavigate } from "react-router";
 //import axios from "axios";
 import Legend from "./Legend/Legend";
-import { DeckProvider } from "../../hooks/DeckContext";
 
 interface PortfolioProps {}
 
 export default function Portfolio({}: PortfolioProps) {
-    const navigate = useNavigate();
-    const { setPower } = usePower();
-
-    const go = (path: string) => {
-        setPower("off"); // TV shuts off
-        setTimeout(() => {
-            navigate(path); // swap the page
-            setPower("on"); // TV turns back on
-        }, 200);
-    };
-    // const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
-
-    // // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
-    // const images = Object.fromEntries(
-    //     Object.entries(imageModules).map(([path, module]) => {
-    //         const fileName = path.split("/").pop();
-    //         return [fileName, (module as any).default];
-    //     }),
-    // );
-
-    // Module level: runs once, so the array identity never changes between renders
     const galleryModules = import.meta.glob<string>("../../gallery/**/*.{png,jpg,jpeg,svg}", {
         eager: true,
         query: "?url",
@@ -53,16 +31,18 @@ export default function Portfolio({}: PortfolioProps) {
         (_, i) => BASE_IMAGES[i % BASE_IMAGES.length],
     );
 
-    // const items = gallery.map((src) => (
-    //     <div
-    //         style={{
-    //             backgroundImage: `url("${src}")`,
-    //             backgroundSize: "contain",
-    //             backgroundRepeat: "no-repeat",
-    //             backgroundPosition: "center",
-    //         }}
-    //     />
-    // ));
+    const navigate = useNavigate();
+    const { setPower } = usePower();
+
+    const go = (path: string) => {
+        setPower("off"); // TV shuts off
+        setTimeout(() => {
+            navigate(path); // swap the page
+            setPower("on"); // TV turns back on
+        }, 200);
+    };
+
+    // Module level: runs once, so the array identity never changes between renders
 
     const [shouldRender, setShouldRender] = useState(false);
 
@@ -165,15 +145,7 @@ export default function Portfolio({}: PortfolioProps) {
                                     <span className={`${styles.title}`}>Visual Illustrations</span>
                                 </JitterDiv>
                                 <div className={`${styles.categories}`}>
-                                    {/* <Slider
-                                            images={gallery}
-                                            spacing={0.22}
-                                            spread={180}
-                                            edgeScale={0.6}
-                                        /> */}
-                                    <DeckProvider>
-                                        <CardCarousel gallery={gallery} visible={5} spread={140} edgeScale={0.6} />
-                                    </DeckProvider>
+                                    <CardCarousel gallery={gallery} visible={5} spread={140} edgeScale={0.6} />
                                 </div>
                             </div>
                         </div>

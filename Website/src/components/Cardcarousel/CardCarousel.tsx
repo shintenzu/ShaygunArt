@@ -335,18 +335,22 @@ export default function CardCarousel({
                         >
                             <CRTBox {...CRT_PROPS} className={styles.crt} innerClassName={styles.crtInner}>
                                 {item}
-                                <div className={styles.caption}>
-                                    <div className={styles.captionLeft}>
-                                        <div>Title:</div>
-                                        <div>Year:</div>
-                                        <div>Medium:</div>
+                                {!flatten ? (
+                                    <div className={styles.caption}>
+                                        <div className={styles.captionLeft}>
+                                            <div>Title:</div>
+                                            <div>Year:</div>
+                                            <div>Medium:</div>
+                                        </div>
+                                        <div className={styles.captionRight}>
+                                            <div>This is some awesome</div>
+                                            <div>2015</div>
+                                            <div>Digital Painting</div>
+                                        </div>
                                     </div>
-                                    <div className={styles.captionRight}>
-                                        <div>This is some awesome</div>
-                                        <div>2015</div>
-                                        <div>Digital Painting</div>
-                                    </div>
-                                </div>
+                                ) : (
+                                    <></>
+                                )}
                                 <div className={styles.counter}>
                                     {i}/{items.length}
                                 </div>

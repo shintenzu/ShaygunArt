@@ -35,17 +35,7 @@ function getContrastColor(hexColor: string) {
 
 function Project({ name = "Projects" }: ProjectProps) {
     const ref = useScrollFade<HTMLDivElement>(20, 30);
-    // const imageModules = import.meta.glob("../../icons/Resume/*.{png,jpg,jpeg,svg}", { eager: true });
 
-    // // Map them into a clean key-value object (e.g., { "logo.png": "/src/assets/images/logo.png" })
-    // const images = Object.fromEntries(
-    //     Object.entries(imageModules).map(([path, module]) => {
-    //         const fileName = path.split("/").pop();
-    //         return [fileName, (module as any).default];
-    //     }),
-    // );
-
-    // Module level: runs once, so the array identity never changes between renders
     const galleryModules = import.meta.glob<string>("../../gallery/**/*.{png,jpg,jpeg,svg}", {
         eager: true,
         query: "?url",
@@ -62,31 +52,6 @@ function Project({ name = "Projects" }: ProjectProps) {
         { length: Math.max(MIN_CARDS, BASE_IMAGES.length) },
         (_, i) => BASE_IMAGES[i % BASE_IMAGES.length],
     );
-
-    // const items = gallery.map((src) => (
-    //     <div
-    //         style={{
-    //             backgroundImage: `url("${src}")`,
-    //             backgroundSize: "contain",
-    //             backgroundRepeat: "no-repeat",
-    //             backgroundPosition: "center",
-    //         }}
-    //     />
-    // ));
-
-    // const bPlusExpand = <img src={images[`BluePlus.png`]} className={`${styles.expand}  btn-grow`} />;
-
-    // const jobExpand = (
-    //     <div className={`${styles.expand}`}>
-    //         <img src={images[`BlueCross.png`]} className={`btn-grow`} />
-    //     </div>
-    // );
-
-    // const toolSet = (logo: string) => (
-    //     <div className={`${styles.expand}`}>
-    //         <img src={images[`${logo}`]} className={`btn-grow`} />
-    //     </div>
-    // );
 
     const [shouldRender, setShouldRender] = useState(false);
 
@@ -282,9 +247,6 @@ function Project({ name = "Projects" }: ProjectProps) {
                                         <div className={`${styles.title}`}>Tools</div>
 
                                         <div className={`${styles.toolContent}`}>
-                                            {/* {Array.from({ length: 6 }).map((_, index) => (
-                                                <img src={design} className={`${styles.toolX}`} />
-                                            ))} */}
                                             <img src={ps} className={`${styles.toolX}`} />
                                             <img src={ai} className={`${styles.toolX}`} />
                                             <img src={id} className={`${styles.toolX}`} />
@@ -316,12 +278,6 @@ function Project({ name = "Projects" }: ProjectProps) {
                                     <span className={`${styles.title}`}>Card Carousel</span>
                                 </div>
                                 <div className={`${styles.categories}`}>
-                                    {/* <Slider
-                                            images={gallery}
-                                            spacing={0.22}
-                                            spread={180}
-                                            edgeScale={0.6}
-                                        /> */}
                                     <CardCarousel gallery={gallery} visible={5} spread={140} edgeScale={0.6} />
                                 </div>
                             </div>

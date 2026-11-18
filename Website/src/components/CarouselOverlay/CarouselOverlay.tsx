@@ -1,4 +1,4 @@
-//import { createPortal } from "react-dom";
+import { createPortal } from "react-dom";
 import styles from "./CarouselOverlay.module.scss";
 import { useDeck } from "../../hooks/DeckContext";
 
@@ -21,9 +21,9 @@ function CarouselOverlay({
     console.log("overlay visibility:", visibility);
     const src = deck[deckIndex];
     console.log("cards" + src);
-    if (src == undefined) return null;
+    if (!visibility || !src) return null;
 
-    return (
+    return createPortal(
         <>
             {visibility && (
                 <div className={`${styles.container}`}>
@@ -40,6 +40,18 @@ function CarouselOverlay({
                         <div className={`${styles.display}`}>
                             <div className={`${styles.imageBox}`}>
                                 {src != undefined || src != null ? <img src={src} /> : ""}
+                                <div className={styles.caption}>
+                                    <div className={styles.captionLeft}>
+                                        <div>Title:</div>
+                                        <div>Year:</div>
+                                        <div>Medium:</div>
+                                    </div>
+                                    <div className={styles.captionRight}>
+                                        <div>This is some awesome</div>
+                                        <div>2015</div>
+                                        <div>Digital Painting</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -52,14 +64,15 @@ function CarouselOverlay({
                                 flat={true}
                                 visible={8}
                                 spread={280}
-                                cardSize={"10dvw"}
+                                cardSize={"9dvw"}
                             ></CardCarousel>
                         </div>
                     </div>
                 </div>
             )}
             ;
-        </>
+        </>,
+        document.body,
     );
 }
 

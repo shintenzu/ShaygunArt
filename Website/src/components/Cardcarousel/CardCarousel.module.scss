@@ -152,7 +152,9 @@
         transform: translateY(100%);
         transition: transform 0.3s ease-in-out; /* Handles smooth motion */
         padding: 2%;
-        font-size: clamp(0.1rem, calc(0.5cqw + 0.5cqh), 3rem);
+        padding-left: 5%;
+        padding-right: 5%;
+        font-size: clamp(0.1rem, calc(0.7cqw), 3rem);
         .captionLeft,
         .captionRight {
             // border: 2px solid red;
@@ -161,7 +163,7 @@
             justify-content: flex-start;
             align-content: space-between;
             & > :first-child {
-                font-weight: 900;
+                font-weight: 700;
                 //color: variables.$primary-white;
             }
             & > :not(:first-child) {
@@ -199,7 +201,7 @@
         border-radius: 15%;
         //transition: transform 0.3s ease-in-out; /* Handles smooth motion */
         padding: 2%;
-        font-size: clamp(0.1rem, calc(0.75cqw + 0.75cqh), 3rem);
+        font-size: clamp(0.1rem, calc(1cqw), 3rem);
     }
 }
 

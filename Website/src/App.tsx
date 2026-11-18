@@ -34,6 +34,7 @@ export function Layout() {
     const location = useLocation();
     const outlet = useOutlet();
     const scrolled = ScrollCheck(30);
+    const { visibility, setVisibility, deck, deckIndex } = useDeck();
 
     return (
         <>
@@ -105,6 +106,7 @@ export default function App() {
 
                     {loaded && (
                         <>
+                            <CarouselOverlay></CarouselOverlay>
                             <div className="container">
                                 <LetterGlitch
                                     glitchColors={["#f2000d", "#00defe", "#ffba41", "#ececec"]}
@@ -128,7 +130,7 @@ export default function App() {
                                 />
                             </div>
                             {/* {visibility ? <CarouselOverlay></CarouselOverlay> : <></>} */}
-                            <CarouselOverlay></CarouselOverlay>
+
                             <div className="main-container">
                                 <RouterProvider router={router}></RouterProvider>
                             </div>
